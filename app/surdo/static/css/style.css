@@ -1,3 +1,11 @@
-h1 {
-    color: blue;
+/* LOGO */
+.deaf-logo {
+    width: 160px;
+    height: 45px;
+}
+
+/* BOOTSTRAP OUR COLORS */
+.btn-primary {
+    background-color: #6558F5;
+    border-color: #4230ff;
 }
