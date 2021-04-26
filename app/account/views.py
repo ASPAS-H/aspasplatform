@@ -5,7 +5,8 @@ from django.contrib.auth import authenticate, login as auth_login
 
 def login(request):
     if request.user.is_authenticated:
-        return HttpResponse('Você já está logado!')
+        # REDIRECIONAR PARA TELA DE LOGADO
+        return HttpResponse('Você já está logado! tipo ')
         
     if request.method == 'GET':
         return render(request, 'login.html')
@@ -16,9 +17,11 @@ def login(request):
     if user:
         if user.is_active:
             auth_login(request, user)
-            return HttpResponse('Bem vindo de volta ' + user.name)
+            return HttpResponse('Bem vindo de volta ' + user.name + " tipo "+ user.getStringType())
         else:
-            return HttpResponse('Sua conta foi inativada!')
-    return HttpResponse('Usuario e senha inválidos')
+            loginError = "Sua conta está inativa!"
+            return render(request, 'login.html', { 'error': loginError})
+    loginError = "Usuário ou senha inválidos"
+    return render(request, 'login.html', { 'error': loginError})
 
 

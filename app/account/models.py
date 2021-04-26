@@ -50,7 +50,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         choices=GENDER_CHOICES,
         default=0
     )
-    user_type = models.IntegerField(choices=USER_TYPE, default=3)
+    user_type = models.IntegerField(choices=USER_TYPE, default=0)
     is_active = models.BooleanField(_('active'), default=True, help_text=_('Designates whether this user should be treated as active. Unselect this instead of deleting accounts.'))
     is_staff = models.BooleanField(_('staff status'), default=False, help_text=_('Designates whether the user can log into this admin site.'))
     is_mail_confirmed= models.BooleanField(_('email confirmed'), default=False, help_text=_('Designates whether this user has confirmed his account.'))
@@ -58,7 +58,17 @@ class User(AbstractBaseUser, PermissionsMixin):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-class Meta:
-    verbose_name = _('user')
-    verbose_name_plural = _('users')
+    class Meta:
+        verbose_name = _('user')
+        verbose_name_plural = _('users')
+
+    def getStringType(self):
+        stringType = ""
+        if self.user_type == 0:
+            "Deaf"
+        elif self. user_type == 1:
+            "Interpreter"
+        elif self.user_type == 2:
+            "Hospital Staff"
+        return stringType
     
