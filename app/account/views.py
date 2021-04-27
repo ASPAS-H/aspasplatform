@@ -6,7 +6,7 @@ from django.contrib.auth import authenticate, login as auth_login
 def login(request):
     if request.user.is_authenticated:
         # REDIRECIONAR PARA TELA DE LOGADO
-        return HttpResponse('Você já está logado! tipo ')
+        return HttpResponse('Você já está logado!')
         
     if request.method == 'GET':
         return render(request, 'login.html')
