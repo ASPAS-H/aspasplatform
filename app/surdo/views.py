@@ -24,4 +24,3 @@ def create(request):
 def login(request):
     if(request.method != 'POST'):
         return render(request, 'auth/login.html')
-
