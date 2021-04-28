@@ -1,3 +1,4 @@
+/* TESTE */
 /* LOGO */
 .deaf-logo {
     width: 160px;
@@ -11,4 +12,8 @@
 }
 .body-centerlize {
     height: 100vh;
+}
+
+.bg-fabio {
+    background-color: rgb(207, 224, 231)!important;
 }
