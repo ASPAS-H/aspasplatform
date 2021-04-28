@@ -1,20 +1,3 @@
-/* LOGO */
-.deaf-logo {
-    width: 160px;
-    height: 45px;
-}
-
-/* BOOTSTRAP OUR COLORS */
-.btn-primary {
-    background-color: #6558F5;
-    border-color: #4230ff;
-}
-.body-centerlize {
-    height: 100vh;
-}
-
-
-/* Interpretes */
 body{
     margin: 0;
     padding: 0;
@@ -29,6 +12,7 @@ body{
     border: 0px;
     border-radius: 5px;
     font-weight: bold;
+    cursor: pointer;
 }
 
 #parte_cima{

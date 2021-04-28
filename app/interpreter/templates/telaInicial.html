@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Tela Inicial</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/Interpreter.css' %}">
+    </head>
+    <body>
+        <div id="parte_cima">
+            <button id="button1">Logout</button>
+            <img src="{% static 'img/logo_Final.png' %}" alt="Logo ASPAS">
+            
+        </div>
+        <div>
+            <h1>Olá, Fulano!</h1>
+        </div>
+        <div id="parte_baixo">
+            <ul>
+                <li><button class="buttons" type="button">Solicitações de Consultas</button></li>
+                <li><button class="buttons" type="button">Gerenciar Dados</button></li>
+                <li><button class="buttons" type="button">Interpretar Consulta</button></li>
+            </ul>
+        </div>
+    </body>
+</html>
