@@ -27,3 +27,6 @@ def login(request):
 
 def showIndex(request):
     return render(request, 'deaf_index.html')
+
+def showConsults(request):
+    return render(request, 'deaf_consults.html')
