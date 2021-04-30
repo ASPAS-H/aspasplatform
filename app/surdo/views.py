@@ -30,3 +30,6 @@ def showIndex(request):
 
 def showConsults(request):
     return render(request, 'deaf_consults.html')
+
+def showMap(request):
+    return render(request, 'deaf_hospitals.html')
