@@ -6,3 +6,7 @@ def index(request):
 
 def viewConsults(request):
     return render(request,'viewConsults.html')
+
+def infoView(request):
+    return render(request,'infoView.html')
+
