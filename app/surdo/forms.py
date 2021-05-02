@@ -5,5 +5,5 @@ class NewDeafForm(forms.ModelForm):
 
     class Meta:
         model = Deaf
-        fields = ('name', 'phone', 'cpf', 'health_plan')
+        fields = ('phone', 'cpf', 'health_plan')
         

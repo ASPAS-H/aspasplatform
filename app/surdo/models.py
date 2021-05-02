@@ -1,10 +1,9 @@
 from django.db import models
-from address.models import Address
+from account.models import User
 # Create your models here.
 class Deaf(models.Model):
 
-    name = models.CharField(max_length=255)
-    address = models.OneToOneField(Address, on_delete=models.CASCADE, primary_key=True,)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     phone = models.CharField(max_length=14)
     cpf = models.IntegerField()
     health_plan = models.IntegerField()

@@ -7,6 +7,7 @@ from django.utils.http import urlquote
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 from django.conf import settings
+from address.models import Address
 
 class UserManager(BaseUserManager):
     def _create_user(self, name, email, password, is_superuser, **extra_fields):
@@ -45,11 +46,12 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     name = models.CharField(_('name'), max_length=30)
     email = models.EmailField(_('email address'), max_length=255, unique=True)
-    born_date = models.DateField(_('born_date'), auto_now_add=True)
+    born_date = models.DateField(_('born_date'), null=True)
     gender = models.IntegerField(
         choices=GENDER_CHOICES,
         default=0
     )
+    address = models.ForeignKey(Address, on_delete=models.CASCADE, null=True, blank=True)
     user_type = models.IntegerField(choices=USER_TYPE, default=0)
     is_active = models.BooleanField(_('active'), default=True, help_text=_('Designates whether this user should be treated as active. Unselect this instead of deleting accounts.'))
     is_staff = models.BooleanField(_('staff status'), default=False, help_text=_('Designates whether the user can log into this admin site.'))
