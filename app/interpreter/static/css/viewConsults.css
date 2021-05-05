@@ -39,16 +39,6 @@ a{
     height: 30px;
 }
 
-#buttonBack{
-    padding: 5px ;
-    padding-bottom: 2px;
-    background-color:rgb(150, 170, 184);
-    border-radius: 5px;
-    border: rgb(150, 170, 184);
-    cursor: pointer;
-    margin: 10px;
-}
-
 h1{
     color: #000;
 }
