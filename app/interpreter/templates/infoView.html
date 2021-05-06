@@ -1,0 +1,50 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Informações</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="{% static 'css/infoView.css' %}">
+    </head>
+
+    <body>
+        <header class="header">
+            <h1>Olá, Fulano!</h1>
+            <nav>
+                <ul class="menu">
+                    <li><a href="">Solicitações de Consultas </a></li>
+                    <li><a href="">Gerenciar Datas </a></li>
+                    <li><a href="">Interpretar Consulta</a></li>
+                </ul>
+            </nav>
+            <img src="{% static 'img/logo_Final.png' %}" alt="Logo ASPAS" id="logo">
+        </header>
+        <section class="flex">
+            <h1>Informações</h1>
+
+            <h2>Fulano de Tal</h2>
+
+            <div>
+                <h4>Datas:</h4>
+                <div>
+                    <INPUT type="radio" name="computador" value="date1" checked>00/00/00
+                    <INPUT type="radio" name="computador" value="date2">00/00/00
+                    <INPUT type="radio" name="computador" value="date3">00/00/00
+                </div>
+
+                <h4>Observações</h4>
+                <div >
+                    <p id="notes">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem repellat quae id! Nemo, aliquam sunt ad recusandae ducimus excepturi corporis ipsam ipsum, voluptates sint natus minus magni totam. Harum, nam! Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis natus sapiente sed eius inventore voluptatibus officiis consequuntur optio saepe consectetur iure dolorum rem, quo impedit temporibus non minus. Hic, laboriosam? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aperiam consequuntur debitis sed, dolorum illum architecto dicta, itaque illo asperiores repudiandae ipsa, nostrum est provident nisi temporibus deleniti iusto libero quidem. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Delectus, placeat dolores corrupti laudantium ex quo voluptatum alias adipisci quidem non natus repellendus reprehenderit ab rem. Fuga adipisci dolore excepturi error. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iusto ut tempora accusamus quibusdam velit voluptas itaque vel nulla animi. Id voluptates tenetur eveniet ipsum porro ratione provident saepe maxime atque.</p>
+                </div>
+                <h5>Modalidade: <spam style="color: red;">Presencial/Telemedicina</spam></h5>
+            </div>    
+            <div id="ajust">
+                <button class="buttons">Confirmar</button>
+                <button class="buttons">Rejeitar</button>
+                <p>*Limite de dois dias antes da consulta.</p>
+            </div>
+        </section>
+    </body>
+</html>
