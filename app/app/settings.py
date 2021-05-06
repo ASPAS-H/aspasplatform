@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'app.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', 
-        'NAME': 'aspas_db',
+        'NAME': 'aspas_docs',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': 'localhost',
