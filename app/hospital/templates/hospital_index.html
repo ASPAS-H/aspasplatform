@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <title>Tela inicial Hospital</title>
+</head>
+<body>
+    <div id="upper_part">
+        <button id="button1">Logout</button>
+        <img src="..\static\img\logo.png" alt="logo ASPAS">
+    
+    </div>
+    <div>
+        <h1>Olá, Hospital YYYY</h1>
+    </div>
+    <div id="lower_part">
+        <ul>
+            <li><button class="buttons">Solicitação de consultas</button></li>
+            <li><button class="buttons">Gerenciar datas</button></li>
+            <li><button class="buttons">Contatar intérpretes</button></li>
+            <li><button class="buttons">Videochamada com intérprete</button></li>
+        </ul>
+
+    </div>
+</body>
+</html>
