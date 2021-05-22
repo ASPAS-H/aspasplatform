@@ -5,7 +5,7 @@ class Deaf(models.Model):
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     phone = models.CharField(max_length=14)
-    cpf = models.IntegerField()
+    cpf = models.BigIntegerField()
     health_plan = models.IntegerField()
 
     created_at = models.DateTimeField(auto_now_add=True)
