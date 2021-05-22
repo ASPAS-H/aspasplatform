@@ -38,4 +38,6 @@ def logout(request):
 def error(request):
     return render(request, 'error.html')
 
+def selectRegisterPage(request):
+    return render(request, 'register.html')
 
