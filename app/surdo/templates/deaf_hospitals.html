@@ -1,0 +1,73 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>ASPAS - Hospitais</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+        integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+        crossorigin="" />
+    <link rel="stylesheet" href="{% static 'css/deaf_map.css' %}">
+
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <!-- <i class="fa fa-arrow-circle-left m-2 fa-2x" aria-hidden="true"></i> -->
+        <img src="{% static 'img/logo.png' %}" alt="Logo" class="deaf-logo mr-2">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" href="#">Agenda sua consulta</a>
+                <a class="nav-item nav-link" href="#">Minhas Consultas</a>
+                <a class="nav-item nav-link" href="#">Vídeochamada</a>
+            </div>
+        </div>
+        <div class="text-right">
+            <a class="navbar-brand" href="#">Olá, Fábio</a>
+        </div>
+    </nav>
+    <div class="container mt-4" id="content">
+        <h2>Hospitais perto de você</h2>
+        <form action="#" method="post">
+            <select name="hospital" id="hospitalCheck" class="form-control">
+                <option value="0">Selecione o hospital</option>
+            </select>
+        </form>
+        <div id="hospitalmap"></div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+        crossorigin=""></script>
+    <script>
+        var map = L.map('hospitalmap').setView([-8.063650828177904, -34.88412106071881], 11);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+        L.marker([-8.053364159415395, -34.89758482102265]).addTo(map)
+        L.marker([-8.035782161656662, -34.90731941609072]).addTo(map)
+        L.marker([-8.060715602851797, -34.88086577532247]).addTo(map)
+        L.marker([-8.05247921694444, -34.94496435628899]).addTo(map)
+    </script>
+</body>
+
+</html>

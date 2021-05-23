@@ -10,12 +10,26 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/deaf_index.css' %}">
 </head>
 
 <body>
     <div class="container mt-2">
-        {{ form.errors }}
+        {% if errors %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <strong>ERRO!</strong>
+            {% for error in errors %}
+                {{ error }}
+            {% endfor %}
+        </div>
+
+        <script>
+            $(".alert").alert();
+        </script>
+        {% endif %}
         <header class="d-flex justify-content-between">
             <div class="title">
                 <h1>Crie uma conta</h1>
@@ -24,7 +38,7 @@
                 <img src="{% static 'img/logo.png' %}" alt="Logo" class="deaf-logo">
             </div>
         </header>
-        <form action="/surdo/register/" method="post">
+        <form action="/surdo/register" method="post">
             {% csrf_token %}
             <input type="hidden" name="health_plan" value="1">
             <div class="form-row">
@@ -50,12 +64,12 @@
                 </div>
                 <div class="form-group col-12 col-md-4">
                     <label for="genre">Gênero:</label>
-                    <select name="genre" id="genre" class="form-control">
-                        <option value="0" disabled selected>Selecione um genero</option>
-                        <option value="1">Masculino</option>
-                        <option value="2">Feminino</option>
-                        <option value="3">Não Binario</option>
-                        <option value="4">Outros</option>
+                    <select name="gender" id="genre" class="form-control">
+                        <option value="-1" disabled selected>Selecione um genero</option>
+                        <option value="0">Masculino</option>
+                        <option value="1">Feminino</option>
+                        <option value="2">Não Binario</option>
+                        <option value="3">Outros</option>
                     </select>
                 </div>
                 <div class="form-group col-12 col-md-4">
