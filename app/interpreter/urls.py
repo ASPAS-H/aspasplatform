@@ -8,5 +8,6 @@ urlpatterns = [
     path('', views.index),
     path('consults/', views.viewConsults),
     path('info/', views.infoView),
+    path('register/', views.INTERPRETER_ENDPOINT),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
