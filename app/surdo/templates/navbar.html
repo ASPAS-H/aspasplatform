@@ -1,0 +1,18 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <img src="{% static 'img/logo.png' %}" alt="Logo" class="deaf-logo mr-2">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" href="/surdo/new/consult">Agende sua consulta</a>
+            <a class="nav-item nav-link" href="#">Minhas Consultas</a>
+            <a class="nav-item nav-link" href="#">Vídeochamada</a>
+        </div>
+    </div>
+    <div class="text-right">
+        <a class="navbar-brand" href="#">Olá, {{ user.getFirstName }}</a>
+    </div>
+</nav>

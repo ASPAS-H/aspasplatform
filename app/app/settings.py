@@ -29,7 +29,7 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-APPEND_SLASH = False
+APPEND_SLASH = True
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'account',
     'surdo',
     'address',
-    'interpreter'
+    'interpreter',
     'hospital',
 ]
 
