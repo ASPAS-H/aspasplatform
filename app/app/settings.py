@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'surdo',
     'address',
     'interpreter'
+    'hospital',
 ]
 
 MIDDLEWARE = [

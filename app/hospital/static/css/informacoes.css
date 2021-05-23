@@ -1,0 +1,54 @@
+body, ul, li{
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+
+/*Layout header*/
+.header-info{
+    background: rgb(207, 224, 231);
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    align-items: center;
+}
+
+.menu{
+    display: flex;
+}
+
+.menu li{
+    margin-left: 80px;
+    font-size: 18px;
+}
+
+
+a{
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+}
+
+#logo{
+    width: 130px;
+    height: 40px;
+}
+
+#arrow{
+    width: 30px;
+    height: 30px;
+}
+
+#buttonBack{
+    padding: 5px ;
+    padding-bottom: 2px;
+    background-color:rgb(150, 170, 184);
+    border-radius: 5px;
+    border: rgb(150, 170, 184);
+    cursor: pointer;
+    margin: 10px;
+}
+
+h1{
+    color: #000;
+}
