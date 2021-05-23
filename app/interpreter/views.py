@@ -10,6 +10,6 @@ def viewConsults(request):
 def infoView(request):
     return render(request,'infoView.html')
 
-def INTERPRETER_ENDPOINT(request):
-    return render(request,'INTERPRETER_ENDPOINT.html')
+def registerViewInterpreter(request):
+    return render(request,'registerViewInterpreter.html')
 
