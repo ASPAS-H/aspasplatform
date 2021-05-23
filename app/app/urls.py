@@ -21,4 +21,5 @@ urlpatterns = [
     path('surdo/', include('surdo.urls')),
     path('account/', include('account.urls')),
     path('interpreter/', include('interpreter.urls')),
+    path('hospital/', include('hospital.urls')),
 ]
