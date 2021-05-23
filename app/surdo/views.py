@@ -43,3 +43,6 @@ def showRegister(request):
             errors = [userForm.errors, address_form.errors, deaf_form.errors]
             return render(request, 'deaf_register.html', {'errors': errors})
     return render(request, 'deaf_register.html')
+
+def newConsult(request):
+    return render(request, 'deaf_newconsults.html')
