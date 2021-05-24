@@ -13,3 +13,9 @@ def infoView(request):
 def registerViewInterpreter(request):
     return render(request,'registerViewInterpreter.html')
 
+def datesView(request):
+    return render(request,'datesView.html')
+
+def solicitationView(request):
+    return render(request,'solicitationView.html')
+

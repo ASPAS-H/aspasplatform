@@ -16,7 +16,21 @@
     </head>
     <body>
         <div class="container mt-2">
+            {% if errors %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <strong>ERRO!</strong>
+                {% for error in errors %}
+                    {{ error }}
+                {% endfor %}
+            </div>
 
+            <script>
+                $(".alert").alert();
+            </script>
+            {% endif %}
             <header class="d-flex justify-content-between">
                 <button><img src="{% static 'img/seta-esquerda.png' %}" alt="Botão Voltar" id="arrow"></button>
                 <img src="{% static 'img/logo_Final.png' %}" alt="Logo ASPAS" id="logo">
@@ -24,7 +38,7 @@
 
 
             <h1>Crie uma conta</h1>
-            <form>
+            <form action="/interpreter/register" method="post">
                 <div class="form-row">
                     <div class="form-group col-12">
                         <label for="name">Nome:</label>

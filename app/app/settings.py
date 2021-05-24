@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'account',
     'surdo',
     'address',
-    'interpreter'
+    'interpreter',
     'hospital',
 ]
 
