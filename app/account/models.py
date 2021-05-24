@@ -67,22 +67,12 @@ class User(AbstractBaseUser, PermissionsMixin):
     name = models.CharField(_('name'), max_length=30)
 
     email = models.EmailField(_('email address'), max_length=255, unique=True)
-<<<<<<< HEAD
-
-    born_date = models.DateField(_('born_date'), auto_now_add=True)
-
-=======
     born_date = models.DateField(_('born_date'), null=True)
->>>>>>> 70bf05328c9c12f08c7abb4c29c61abbcf532345
     gender = models.IntegerField(
         choices=GENDER_CHOICES,
         default=0
     )
-<<<<<<< HEAD
-
-=======
     address = models.ForeignKey(Address, on_delete=models.CASCADE, null=True, blank=True)
->>>>>>> 70bf05328c9c12f08c7abb4c29c61abbcf532345
     user_type = models.IntegerField(choices=USER_TYPE, default=0)
 
     is_active = models.BooleanField(_('active'), default=True, help_text=_('Designates whether this user should be treated as active. Unselect this instead of deleting accounts.'))
@@ -113,4 +103,6 @@ class User(AbstractBaseUser, PermissionsMixin):
             "Hospital Staff"
             
         return stringType
-    
+
+    def getFirstName(self):
+        return self.name.split()[0]
