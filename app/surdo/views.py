@@ -3,6 +3,10 @@ from django.shortcuts import render, redirect
 from .forms import NewDeafForm
 from address.forms import AddressForm
 from account.forms import NewUserForm
+from hospital.services import HospitalService
+from .services import DeafService
+from .forms import ConsultForm
+
 from django.contrib.auth.hashers import make_password
 
 def login(request):
@@ -45,4 +49,14 @@ def showRegister(request):
     return render(request, 'deaf_register.html')
 
 def newConsult(request):
-    return render(request, 'deaf_newconsults.html')
+    if request.method == "POST":
+        consult_data = ConsultForm(request.POST)
+        if consult_data.is_valid():
+            consult = DeafService.createConsult(request.POST, request.user)
+            return HttpResponse('Consulta criada com sucesso, id ' + str(consult.id))
+        else:
+            hospitals = HospitalService.getAllHospitals()
+            return render(request, 'deaf_newconsults.html', {"hospitals": hospitals, "errors": consult_data.errors})
+
+    hospitals = HospitalService.getAllHospitals()
+    return render(request, 'deaf_newconsults.html', {"hospitals": hospitals})
