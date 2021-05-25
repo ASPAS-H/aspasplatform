@@ -1,17 +1,21 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/css/index.css">
     <title>Tela inicial Hospital</title>
 </head>
 <body>
-    <div id="upper_part">
-        <button id="button1">Logout</button>
-        <img src="..\static\img\logo.png" alt="logo ASPAS">
+        <div id="upper_part">
+            <img src="..\static\img\logo.png" alt="logo ASPAS">
+        <div style="text-align: center">
+            <a href="/account/logout" id="button1" class="btn btn-secondary">Logout</a>
+        </div>
+        
     
     </div>
     <div>
@@ -19,10 +23,10 @@
     </div>
     <div id="lower_part">
         <ul>
-            <li><button class="buttons">Solicitação de consultas</button></li>
-            <li><button class="buttons">Gerenciar datas</button></li>
-            <li><button class="buttons">Contatar intérpretes</button></li>
-            <li><button class="buttons">Videochamada com intérprete</button></li>
+            <li><a href="#" class="buttons btn btn-secondary text-dark">Solicitação de consultas</a></li>
+            <li><Gerenciar href="#" class="buttons btn btn-secondary text-dark">Gerenciar datas</a></li>
+            <li><Contatar href="#" class="buttons btn btn-secondary text-dark">Contatar intérpretes</a></li>
+            <li><Videochamada href="#" class="buttons btn btn-secondary text-dark">Videochamada com intérprete</a></li>
         </ul>
 
     </div>
