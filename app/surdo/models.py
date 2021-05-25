@@ -14,6 +14,7 @@ class Deaf(models.Model):
     
     class Meta():
         db_table = "deafs"
+        
 class Consult(models.Model):
     MODELITY_TYPES = [(0, 'LOCAL'), (1, 'VIRTUAL')]
 

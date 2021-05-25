@@ -1,0 +1,95 @@
+body, ul, li{
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+
+/*Layout header*/
+.header{
+    background: rgb(207, 224, 231);
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    align-items: center;
+}
+
+.menu{
+    display: flex;
+}
+
+.menu li{
+    margin-left: 80px;
+    font-size: 18px;
+}
+
+a{
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+}
+
+#logo{
+    width: 130px;
+    height: 40px;
+}
+
+#arrow{
+    width: 30px;
+    height: 30px;
+}
+
+h1{
+    color: #000;
+}
+
+/*Layout Section*/
+section > h1{
+    margin-top: 60px;
+    font-size: 40px;
+    
+}
+
+section > h2{
+    font-size: 30px;
+}
+
+.flex{
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+#notes{
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 0px;
+    margin-bottom: 5px;
+    font-size: 17px;
+}
+
+h4{
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+
+h5{
+    margin-top: 0px;
+    margin-bottom: 50px;
+}
+
+
+#ajust{
+    display: flex;
+}
+
+section{
+    background-color: rgb(223, 233, 233);
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+}
+
+body{
+    margin-bottom: 50px;
+}

@@ -1,0 +1,77 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Informações</title>
+        <meta charset="utf-8">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'css/infoDatesView.css' %}">
+        
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <h3>Olá, Fulano</h3>
+            
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link" href="/interpreter/solicitacoes">Solicitações de Consultas</a>
+                    <a class="nav-item nav-link" href="/interpreter/datas">Gerenciar Datas</a>
+                    <a class="nav-item nav-link" href="/interpreter/consults">Interpretar Consultas</a>
+                </div>
+            </div>
+
+            <div class="text-right">
+                <img src="{% static 'img/logo_Final.png' %}" alt="Logo" class="mr-2" id="logo">
+            </div>
+        </nav>
+        
+        <section class="flex">
+            <h1>Informações</h1>
+
+            <h2><!--{{consult.user}}--></h2>
+
+            <div>
+                <h4>Datas: <!--{{consult.data1}}--></h4>
+
+                <h4>Observações</h4>
+                <div >
+                    <p id="notes"><!--{{consult.observations}}--></p>
+                </div>
+                <h5>Modalidade: <spam style="color: red;">Presencial/Telemedicina</spam></h5>
+            </div>    
+            <div id="d-grid gap-2 d-md-block">
+                <a href="" class="btn btn-primary">Confirmar</a>
+
+                <a href="" class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Desmarcar</a>
+
+                <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
+
+                    <div class="offcanvas-header">
+                        <h3 class="offcanvas-title" id="offcanvasBottomLabel">AVISO</h3>
+                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+
+                    <div class="offcanvas-body small">
+                        <h6>Tem certeza que gostaria de desmarcar?</h6>
+                        <a type="button" class="btn btn-outline-primary ">Voltar</a>
+                        <a class="btn btn-primary" href="#" role="button ">Sim,Desmarcar</a>
+                    </div>
+                    
+
+                </div>
+                
+            </div>
+        </section>
+        
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
+    </body>
+</html>
