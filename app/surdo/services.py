@@ -16,5 +16,5 @@ class DeafService():
         return consult
     
     def getConsults(user):
-        consults = Consult.objects.get(id=user.id)
+        consults = Consult.objects.filter(user_id=user.id)
         return consults
