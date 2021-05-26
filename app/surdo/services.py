@@ -1,4 +1,5 @@
 from .forms import ConsultForm
+from .models import Consult
 from hospital.services import HospitalService
 import logging
 logger = logging.getLogger(__name__)
@@ -13,3 +14,12 @@ class DeafService():
         consult.save()
         logger.error(consult)
         return consult
+    
+    def getConsults(user):
+        consults = Consult.objects.filter(user_id=user.id)
+        return consults
+
+    def getPendingConsults():
+        consults = Consult.objects.filter(status=1)
+        return consults
+        

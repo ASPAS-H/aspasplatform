@@ -6,8 +6,11 @@ from account.forms import NewUserForm
 from hospital.services import HospitalService
 from .services import DeafService
 from .forms import ConsultForm
-
+from address.services import AddressService
 from django.contrib.auth.hashers import make_password
+
+import logging
+logger = logging.getLogger(__name__)
 
 def login(request):
     if(request.method != 'POST'):
@@ -21,6 +24,9 @@ def showConsults(request):
 
 def showMap(request):
     return render(request, 'deaf_hospitals.html')
+
+def showStatus(request):
+    return render(request,'deaf_status.html',{'messages':'Hello world!'})
 
 def showRegister(request):
     deaf = None
@@ -42,18 +48,20 @@ def showRegister(request):
                 deaf.address = address
                 deaf.user = user
                 deaf.save()
-                return HttpResponse('Registrado!')
+                return render(request, 'deaf_status.html', {'messages':'Sua conta foi registrada com sucesso.'})
         else:
             errors = [userForm.errors, address_form.errors, deaf_form.errors]
             return render(request, 'deaf_register.html', {'errors': errors})
     return render(request, 'deaf_register.html')
 
 def newConsult(request):
+    for consult in DeafService.getPendingConsults():
+        logger.error(consult.observations)
     if request.method == "POST":
         consult_data = ConsultForm(request.POST)
         if consult_data.is_valid():
             consult = DeafService.createConsult(request.POST, request.user)
-            return HttpResponse('Consulta criada com sucesso, id ' + str(consult.id))
+            return render(request, 'deaf_status.html', {'messages':'Consulta criada com sucesso [ID: ' + str(consult.id) + ']'})
         else:
             hospitals = HospitalService.getAllHospitals()
             return render(request, 'deaf_newconsults.html', {"hospitals": hospitals, "errors": consult_data.errors})

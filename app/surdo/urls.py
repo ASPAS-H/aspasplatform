@@ -9,6 +9,7 @@ urlpatterns = [
     path('consults', views.showConsults),
     path('map', views.showMap),
     path('register', views.showRegister),
+    path('status', views.showStatus),
     path('new/consult', views.newConsult)
 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

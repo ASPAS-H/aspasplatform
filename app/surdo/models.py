@@ -17,6 +17,7 @@ class Deaf(models.Model):
         
 class Consult(models.Model):
     MODELITY_TYPES = [(0, 'LOCAL'), (1, 'VIRTUAL')]
+    STATUS = [(0, 'PENDING'), (1, 'AWAITING_INTERPRETER'), (2, 'SCHEDULED'), (3, 'FINISHED')]
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE)
@@ -24,6 +25,7 @@ class Consult(models.Model):
     date2 = models.DateField()
     date3 = models.DateField()
     modelity = models.IntegerField(choices = MODELITY_TYPES)
+    status = models.IntegerField(choices= STATUS)
     observations = models.TextField(null = True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
