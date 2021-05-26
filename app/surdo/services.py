@@ -1,4 +1,5 @@
 from .forms import ConsultForm
+from .models import Consult
 from hospital.services import HospitalService
 import logging
 logger = logging.getLogger(__name__)
@@ -13,3 +14,7 @@ class DeafService():
         consult.save()
         logger.error(consult)
         return consult
+    
+    def getConsults(user):
+        consults = Consult.objects.get(id=user.id)
+        return consults
