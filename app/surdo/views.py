@@ -6,8 +6,11 @@ from account.forms import NewUserForm
 from hospital.services import HospitalService
 from .services import DeafService
 from .forms import ConsultForm
-
+from address.services import AddressService
 from django.contrib.auth.hashers import make_password
+
+import logging
+logger = logging.getLogger(__name__)
 
 def login(request):
     if(request.method != 'POST'):
@@ -52,6 +55,8 @@ def showRegister(request):
     return render(request, 'deaf_register.html')
 
 def newConsult(request):
+    for consult in DeafService.getPendingConsults():
+        logger.error(consult.observations)
     if request.method == "POST":
         consult_data = ConsultForm(request.POST)
         if consult_data.is_valid():
