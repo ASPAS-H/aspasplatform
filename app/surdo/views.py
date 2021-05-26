@@ -22,6 +22,9 @@ def showConsults(request):
 def showMap(request):
     return render(request, 'deaf_hospitals.html')
 
+def showStatus(request):
+    return render(request,'deaf_status.html',{'messages':'Hello world!'})
+
 def showRegister(request):
     deaf = None
     if(request.method == 'POST'):
@@ -42,7 +45,7 @@ def showRegister(request):
                 deaf.address = address
                 deaf.user = user
                 deaf.save()
-                return HttpResponse('Registrado!')
+                return render(request, 'deaf_status.html', {'messages':'Sua conta foi registrada com sucesso.'})
         else:
             errors = [userForm.errors, address_form.errors, deaf_form.errors]
             return render(request, 'deaf_register.html', {'errors': errors})
@@ -53,7 +56,7 @@ def newConsult(request):
         consult_data = ConsultForm(request.POST)
         if consult_data.is_valid():
             consult = DeafService.createConsult(request.POST, request.user)
-            return HttpResponse('Consulta criada com sucesso, id ' + str(consult.id))
+            return render(request, 'deaf_status.html', {'messages':'Consulta criada com sucesso [ID: ' + str(consult.id) + ']'})
         else:
             hospitals = HospitalService.getAllHospitals()
             return render(request, 'deaf_newconsults.html', {"hospitals": hospitals, "errors": consult_data.errors})
