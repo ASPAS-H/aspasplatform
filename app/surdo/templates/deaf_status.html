@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <title>ASPAS</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/deaf_status.css' %}">
+</head>
+<body>
+    <div class="c1">
+        <div class="p2">
+            <h1 class="text-left">ASPAS</h1>
+        </div>
+    </div>
+    <div class="p1">
+        {% if messages %}
+        <br>
+        <h1>{{ messages }}</h1>
+        <br>
+        {% endif %}
+    </div>
+    <button name="goback" id="goback"><a href="../../account/login">Voltar</a></button>
+</body>
+</html>
