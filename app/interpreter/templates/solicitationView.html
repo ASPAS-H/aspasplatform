@@ -36,23 +36,24 @@
 
           <div class="row row-cols-1 row-cols-md-2 g-4">
 
-            <!--{% for consult in consults% }-->
+            {% for consult in consults %}
               <div class="col">
                 <div class="card">
                   <div class="card-body">
-                    <h5 class="card-title"><!--{{consult.user}}--></h5>
-                    <h6 class="card-title">Data: <!--{{consult.date1}}--></h6>
+                    <h5 class="card-title">{{consult.user.name}}</h5>
+                    <h6 class="card-title">Data: {{consult.date1}}</h6>
                     <h6 class="card-title">Observações:</h6>
-                    <p class="card-text"><!--{{consult.observations}}--></p>
+                    <p class="card-text">{{consult.observations}}</p>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                      <a href="/interpreter/info-consultas" class="btn btn-primary"><!--/{{consult.id}}-->Ver Mais</a>
+                      
+                      <a href="/interpreter/info-solicitacoes/{{consult.id}}" class="btn btn-primary">Ver Mais</a>
+              
                     </div>
                   </div>
                 </div>
               </div>
-            <!--{% endfor %}-->
+            {% endfor %}
 
-    
           </div>
 
         </div>

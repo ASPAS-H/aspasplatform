@@ -1,14 +1,15 @@
 from django.shortcuts import render, get_object_or_404
-#from .models import Consult
-# Create your views here.
+from surdo.services import DeafService
+#Create your views here.
 
 def solicitationView(request):
-    #consults = Consult.objects.all()
-    return render(request,'solicitationView.html')#, {'consults':consults})
+    consults = DeafService.getPendingConsults()
+    return render(request,'solicitationView.html', {'consults':consults})
 
-def infoConsultsView(request): #id
-    #consult = get_object_or_404(Consult, pk=id)
-    return render(request,'infoConsultsView.html')#, {'consult':consult})
+def infoSolicitationView(request,id): #
+    #consult = get_object_or_404(consult, pk=id)
+    #consult = DeafService.getConsults(id)
+    return render(request,'infoSolicitationView.html')#, {'consults':consult})
 
 def index(request):
     return render(request,'telaInicial.html')
