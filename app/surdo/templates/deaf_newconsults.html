@@ -16,7 +16,7 @@
 
 <body>
     {% include 'navbar.html' %}
-
+    <section>
     <div class="container mt-3">
         <h1>Agende sua consulta</h1>
         {% if errors %}
@@ -85,9 +85,17 @@
                     <textarea name="observations" id="obs" class="form-control"></textarea>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary">Enviar</button>
+            <button type=button class="btn btn-primary" id="sendbutton">Enviar</button>
+        </form>
     </div>
-    </form>
+    </section>
+    <div class="confirm2">
+        <div class="confirmbox2">
+            <br>
+            <p>Voce tem centeza para criar uma nova consulta?</p>
+            <button type="submit" class="btn btn-primary" id="byes">Sim</button>
+            <button type=button class="btn btn-primary" id="bno">Nao</button>
+        </div>
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -100,6 +108,14 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+    <script>
+        document.getElementById('sendbutton').addEventListener('click',function() {
+            document.querySelector('.confirm2').style.display = 'flex';
+        });
+        document.getElementById('bno').addEventListener('click',function() {
+            document.querySelector('.confirm2').style.display = 'none';
+        });
+    </script>
 </body>
 
 </html>
