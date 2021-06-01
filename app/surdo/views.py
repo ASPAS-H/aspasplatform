@@ -19,9 +19,6 @@ def login(request):
 def showIndex(request):
     return render(request, 'deaf_index.html')
 
-def showConsults(request):
-    return render(request, 'deaf_consults.html')
-
 def showMap(request):
     return render(request, 'deaf_hospitals.html')
 
@@ -55,8 +52,6 @@ def showRegister(request):
     return render(request, 'deaf_register.html')
 
 def newConsult(request):
-    for consult in DeafService.getPendingConsults():
-        logger.error(consult.observations)
     if request.method == "POST":
         consult_data = ConsultForm(request.POST)
         if consult_data.is_valid():
@@ -68,3 +63,11 @@ def newConsult(request):
 
     hospitals = HospitalService.getAllHospitals()
     return render(request, 'deaf_newconsults.html', {"hospitals": hospitals})
+
+def view_consults(request):
+    consults = DeafService.getConsults(request.user)
+    return render(request, 'deaf_consults.html', {"consults": consults})
+
+def view_consult(request, consult_id):
+    consult = DeafService.getConsult(consult_id)
+    return render(request, 'deaf_consult.html', {"consult": consult})
