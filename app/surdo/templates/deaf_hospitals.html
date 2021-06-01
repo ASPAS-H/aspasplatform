@@ -26,8 +26,12 @@
         <h2>Hospitais perto de você</h2>
         <form action="#" method="post">
             <select name="hospital" id="hospitalCheck" class="form-control">
-                <option value="0">Selecione o hospital</option>
+                <option value="0" disabled>Selecione o hospital</option>
+                {% for hospital in hospitals %}
+                    <option value="{{ hospital.id }}">{{ hospital.name }}</option>
+                {% endfor %}
             </select>
+            
         </form>
         <div id="hospitalmap"></div>
     </div>
@@ -46,10 +50,11 @@
             maxZoom: 19,
             attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map);
-        L.marker([-8.053364159415395, -34.89758482102265]).addTo(map)
-        L.marker([-8.035782161656662, -34.90731941609072]).addTo(map)
-        L.marker([-8.060715602851797, -34.88086577532247]).addTo(map)
-        L.marker([-8.05247921694444, -34.94496435628899]).addTo(map)
+        {% for hospital in hospitals %}
+            var popup = L.popup().setContent("{{ hospital.name }}" + "<br>" + '<a href="/surdo/new/consult" target="_blank">Agendar consulta</a>');
+            L.marker([{{ hospital.address.lat }}, {{ hospital.address.lng }}]).bindPopup(popup).addTo(map);
+        {% endfor %}
+        
     </script>
 </body>
 

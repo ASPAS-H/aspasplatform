@@ -48,7 +48,7 @@
                         <select name="hospital" id="hospital" required class="form-control">
                             <option value="0" selected disabled>Selecione uma opção</option>
                             {% for hospital in hospitals %}
-                            <option value="{{ hospital.id }}">{{ hospital.name }}</option>
+                                <option value="{{ hospital.id }}">{{ hospital.name }}</option>
                             {% endfor %}
                         </select>
                         <a href="/surdo/map">Ver hospitais perto de mim</a>

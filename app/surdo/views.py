@@ -13,14 +13,14 @@ import logging
 logger = logging.getLogger(__name__)
 
 def login(request):
-    if(request.method != 'POST'):
-        return render(request, 'auth/login.html')
+    return render(request, 'auth/login.html')
 
 def showIndex(request):
     return render(request, 'deaf_index.html')
 
 def showMap(request):
-    return render(request, 'deaf_hospitals.html')
+    hospitals = AddressService.get_nearby_hospitals(request.user.address.id)
+    return render(request, 'deaf_hospitals.html', {"hospitals": hospitals})
 
 def showStatus(request):
     return render(request,'deaf_status.html',{'messages':'Hello world!'})
@@ -61,7 +61,7 @@ def newConsult(request):
             hospitals = HospitalService.getAllHospitals()
             return render(request, 'deaf_newconsults.html', {"hospitals": hospitals, "errors": consult_data.errors})
 
-    hospitals = HospitalService.getAllHospitals()
+    hospitals = AddressService.get_nearby_hospitals(request.user.address.id)
     return render(request, 'deaf_newconsults.html', {"hospitals": hospitals})
 
 def view_consults(request):
