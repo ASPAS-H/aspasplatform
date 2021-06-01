@@ -4,7 +4,7 @@ from address.models import Address
 
 class Hospital(models.Model):
 
-    name = models.CharField(max_length=14)
+    name = models.CharField(max_length=255)
     email = models.CharField(max_length=255)
     cnpj = models.BigIntegerField()
     address = models.ForeignKey(Address, on_delete=models.CASCADE, null=True, blank=True)

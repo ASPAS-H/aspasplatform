@@ -1,3 +1,5 @@
 django
 mysqlclient
 logging
+requests
+dotenv
