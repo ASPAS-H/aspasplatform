@@ -8,7 +8,6 @@ urlpatterns = [
     path('', views.index),
     path('consultas', views.viewConsults),
     path('info-solicitacoes/', views.infoSolicitationView), #path('info/<int:id>', views.infoView)
-    path('datas', views.datesView),
     path('info-datas', views.infoDatesView),
     path('solicitacoes', views.solicitationView),
     path('interpreter/register', views.registerViewInterpreter),

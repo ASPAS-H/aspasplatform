@@ -20,9 +20,6 @@ def viewConsults(request):
 def registerViewInterpreter(request):
     return render(request,'registerViewInterpreter.html')
 
-def datesView(request):
-    return render(request,'datesView.html')
-
 def infoDatesView(request):
     return render(request,'infoDatesView.html')
 
