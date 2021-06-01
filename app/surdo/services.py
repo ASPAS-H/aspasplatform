@@ -11,6 +11,7 @@ class DeafService():
         consult = consult.save(commit=False)
         consult.user_id = user.id
         consult.hospital = hospital
+        consult.status = 0
         consult.save()
         logger.error(consult)
         return consult
