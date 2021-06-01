@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <title>Solicitação de consultas</title>
+    <style>
+        .mr-2, .mx-2 {
+        margin-right: .5rem!important;
+        }
+        textarea:disabled {
+        background-color: white!important;
+        }
+        .deaf-logo {
+        width: 160px;
+        height: 45px;
+        margin-left: 8px;
+        }
+        .bg-secondary{
+        background-color: #e8e8e8!important;
+        }
+        
+    </style>
+</head>
+<body>
+    {% include 'hospital_navbar.html' %}
+    <div class="container mt-2">
+        <h1>Minhas consultas</h1>
+        <div class="row justify-content-between">
+
+            {% for consult in consults %}
+            <div class="card col-5 mb-4 bg-secondary">
+                <h3 class="card-title">{{ consult.hospital.name }}</h3>
+                <div class="card-body">
+                    <p class="card-text"><b>Data:</b> {{ consult.date1|date:"d/m/Y" }}, {{ consult.date2|date:"d/m/Y" }}, {{ consult.date3|date:"d/m/Y" }}</p>
+                    <p class="card-text"><b>Obsevações</b></p>
+                    <textarea class="form-control" disabled>{{ consult.observations }}</textarea>
+                    {% if consult.status == 0 or consult.status == 1 or consult.status == 4 %}
+                        <p class="text-danger"><b>STATUS:</b> {{ consult.getStringStatus }}</p>
+                    {% else %}
+                        <p class="text-success"><b>STATUS:</b> {{ consult.getStringStatus }}</p>
+                    {% endif %}
+                    <div class="d-flex justify-content-end mt-2">
+                        <a href="/surdo/consult/{{ consult.id }}" class="btn btn-primary">Ver consulta</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    </div>
+
+</body>
+</html>
