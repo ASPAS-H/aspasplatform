@@ -30,6 +30,13 @@ class DeafService():
         except Consult.DoesNotExist:
             consult = {"not_found": True}
         return consult
+    
+    def getInterpreterConsults(interpreter_id):
+        try:
+            consults = Consult.objects.filter(interpreter=interpreter_id)
+        except Consult.DoesNotExist:
+            consults = {"not_found": True}
+        return consults
 
     def get_hospitals_consults(hospital_id):
         hospitals = Consult.objects.filter(hospital_id=hospital_id)
