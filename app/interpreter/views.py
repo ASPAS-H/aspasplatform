@@ -6,10 +6,9 @@ def solicitationView(request):
     consults = DeafService.getPendingConsults()
     return render(request,'solicitationView.html', {'consults':consults})
 
-def infoSolicitationView(request,id): #
-    #consult = get_object_or_404(consult, pk=id)
-    #consult = DeafService.getConsults(id)
-    return render(request,'infoSolicitationView.html')#, {'consults':consult})
+def infoSolicitationView(request,id):
+    consult = DeafService.getConsult(id)
+    return render(request,'infoSolicitationView.html', {'consult':consult})
 
 def index(request):
     return render(request,'telaInicial.html')
@@ -20,8 +19,12 @@ def viewConsults(request):
 def registerViewInterpreter(request):
     return render(request,'registerViewInterpreter.html')
 
-def infoDatesView(request):
-    return render(request,'infoDatesView.html')
+def paymentView(request):
+    return render(request,'paymentView.html')
+
+def infoDatesView(request,id):
+    consult = DeafService.getConsult(id)
+    return render(request,'infoDatesView.html', {'consult':consult})
 
 
 

@@ -22,9 +22,9 @@
 
             <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-item nav-link" href="/interpreter/solicitacoes">Solicitações de Consultas</a>
-                    <a class="nav-item nav-link" href="/interpreter/consults">Interpretar Consultas</a>
-                    <a class="nav-item nav-link" href="">Pagamento</a>
+                    <a class="nav-item nav-link" href="solicitacoes">Solicitações de Consultas</a>
+                    <a class="nav-item nav-link" href="consultas">Interpretar Consultas</a>
+                    <a class="nav-item nav-link" href="pagamento">Pagamento</a>
                 </div>
             </div>
 
@@ -36,37 +36,44 @@
         <section class="flex">
             <h1>Informações</h1>
 
-            <h2><!--{{consult.user}}--></h2>
+            <h2>{{consult.user}}</h2>
 
             <div>
-                <h4>Datas: <!--{{consult.data1}}--></h4>
+                <h4>Datas: {{consult.data1|date:"d/m/Y"}}</h4>
 
                 <h4>Observações</h4>
                 <div >
-                    <p id="notes"><!--{{consult.observations}}--></p>
+                    <p id="notes">{{consult.observations}}</p>
                 </div>
-                <h5>Modalidade: <spam style="color: red;">Presencial/Telemedicina</spam></h5>
+                <h5>Modalidade: <spam style="color: red;">{{consult.modelity}}</spam></h5>
             </div>    
+            
             <div id="d-grid gap-2 d-md-block">
                 <a href="" class="btn btn-primary">Confirmar</a>
 
-                <a href="" class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBottom" aria-controls="offcanvasBottom">Desmarcar</a>
-
-                <div class="offcanvas offcanvas-bottom" tabindex="-1" id="offcanvasBottom" aria-labelledby="offcanvasBottomLabel">
-
-                    <div class="offcanvas-header">
-                        <h3 class="offcanvas-title" id="offcanvasBottomLabel">AVISO</h3>
-                        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    Desmarcar
+                </button>
+                
+                <!-- Modal -->
+                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="staticBackdropLabel">Aviso</h5>
+                        </div>
+                        <div class="modal-body">
+                            Tem certeza que gostaria de desmarcar?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+                            <button type="button" class="btn btn-primary">Sim,Desmarcar</button>
+                        </div>
                     </div>
-
-                    <div class="offcanvas-body small">
-                        <h6>Tem certeza que gostaria de desmarcar?</h6>
-                        <a type="button" class="btn btn-outline-primary ">Voltar</a>
-                        <a class="btn btn-primary" href="#" role="button ">Sim,Desmarcar</a>
                     </div>
-                    
-
                 </div>
+
                 
             </div>
         </section>

@@ -1,13 +1,13 @@
 {% load static %}
 
-<!DOCTYPE html>
 
 <html>
     <head>
         <title>Informações</title>
         <meta charset="utf-8">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-        <link rel="stylesheet" href="{% static 'css/infoSolicitationView.css' %}">
+        <link rel="stylesheet" href="{% static 'css/paymentView.css' %}">
+        <title>Pagamento</title>
         
     </head>
 
@@ -33,47 +33,44 @@
             </div>
         </nav>
         
-        <section class="flex">
-            <h1>Informações</h1>
+        <section>
 
-            <h2>{{consult.user.name}}</h2>
+            <div class="d-flex justify-content-between">
+                <h2>Pagamento</h2>
+                <h5>Saldo: R$00,00</h5>
+            </div>
+            
+            <h4>Métodos de Recebimento</h4>
 
-            <div>
-                <h4>Datas: {{consult.date1|date:"d/m/Y"}}</h4>
-
-                <h4>Observações</h4>
-                <div >
-                    <p id="notes">{{consult.observations}}</p>
-                </div>
-                <h5>Modalidade: <spam style="color: red;">{{consult.modelity}}</spam></h5>
-            </div>    
-            <div id="d-grid gap-2 d-md-block">
-                <a href="" class="btn btn-primary">Aceitar</a>
-
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                    Rejeitar
-                </button>
-                
-                <!-- Modal -->
-                <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="staticBackdropLabel">Tem Certeza?</h5>
-                        </div>
-                        <div class="modal-body">
-                            Ao rejeitar você não terá mais acesso a essa consulta.
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                            <button type="button" class="btn btn-primary">Sim,Rejeitar</button>
-                        </div>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                Rejeitar
+            </button>
+            
+            <!-- Modal -->
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Escolha o Método de Recebimento</h5>
                     </div>
+                    <div class="modal-body">
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected></option>
+                            <option value="1">Pix</option>
+                            <option value="2">Ted</option>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+                        <button type="button" class="btn btn-primary">Confirmar</button>
                     </div>
                 </div>
+                </div>
+            </div>
 
-                
+            <div class="d-grid gap-2 d-md-block space">
+                <a class="btn btn-outline-primary" type="button">Ver Fatura</a>
             </div>
         </section>
         

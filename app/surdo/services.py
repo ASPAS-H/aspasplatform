@@ -23,4 +23,8 @@ class DeafService():
     def getPendingConsults():
         consults = Consult.objects.filter(status=1)
         return consults
+
+
+    def getConsult(id):
+        return Consult.objects.get(id = id)
         
