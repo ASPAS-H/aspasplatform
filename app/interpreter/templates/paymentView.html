@@ -3,12 +3,11 @@
 
 <html>
     <head>
-        <title>Informações</title>
+        <title>Pagamento</title>
         <meta charset="utf-8">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
         <link rel="stylesheet" href="{% static 'css/paymentView.css' %}">
-        <title>Pagamento</title>
-        
+        <script type="text/javaScript" src="{% static 'js/paymentView.js'%}"></script>
     </head>
 
     <body>
@@ -44,7 +43,7 @@
 
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                Rejeitar
+                + Cadastrar novo
             </button>
             
             <!-- Modal -->
@@ -54,13 +53,39 @@
                     <div class="modal-header">
                         <h5 class="modal-title" id="staticBackdropLabel">Escolha o Método de Recebimento</h5>
                     </div>
+                    
                     <div class="modal-body">
-                        <select class="form-select" aria-label="Default select example">
+                        <select class="form-select" aria-label="Default select example" onclick="mostra(value)">
                             <option selected></option>
-                            <option value="1">Pix</option>
-                            <option value="2">Ted</option>
+                            <option value="pix">Pix</option>
+                            <option value="ted">Ted</option>
                         </select>
                     </div>
+
+                    <!--Pix Form-->
+                    <div class="mb-3 hide ajust" id="pix">
+                        <label for="exampleFormControlInput1" class="form-label">Chave Pix:</label>
+                        <input type="email" class="form-control" id="exampleFormControlInput1">
+                    </div>
+
+                    <!--Ted Form-->
+                    <div class="mb-3 hide ajust" id="ted">
+                        <label for="exampleFormControlInput1" class="form-label">Banco:</label>
+                        <input type="email" class="form-control" id="exampleFormControlInput1">
+
+                        <label for="exampleFormControlInput1" class="form-label">Número da Conta:</label>
+                        <input type="email" class="form-control" id="exampleFormControlInput1">
+
+                        <label for="exampleFormControlInput1" class="form-label">Número da agência:</label>
+                        <input type="email" class="form-control" id="exampleFormControlInput1">
+
+                        <label for="exampleFormControlInput1" class="form-label">Nome Completo:</label>
+                        <input type="email" class="form-control" id="exampleFormControlInput1">
+
+                        <label for="exampleFormControlInput1" class="form-label">CPF:</label>
+                        <input type="email" class="form-control" id="exampleFormControlInput1">
+                    </div>
+
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
                         <button type="button" class="btn btn-primary">Confirmar</button>

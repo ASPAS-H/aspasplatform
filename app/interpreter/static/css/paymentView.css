@@ -22,3 +22,13 @@ h4{
 .space{
     margin-top: 280px;
 }
+
+
+.hide{
+    display: none;
+}
+
+.ajust{
+    padding-left: 16px;
+    padding-right: 16px;
+}
