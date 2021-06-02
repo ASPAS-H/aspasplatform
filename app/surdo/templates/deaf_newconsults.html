@@ -30,7 +30,7 @@
                 {% endfor %}
             </div>
             {% endif %}
-            <form action="/surdo/new/consult" method="post">
+            <form action="/surdo/new/consult" onsubmit="return validateForm()" method="post">
                 {% csrf_token %}
                 <div class="form-group">
                     <div class="form-check form-check-inline">
@@ -43,7 +43,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="form-group col-6">
+                    <div class="form-group col-12">
                         <label for="hospital">Hospital</label>
                         <select name="hospital" id="hospital" required class="form-control">
                             <option value="0" selected disabled>Selecione uma opção</option>
@@ -53,34 +53,26 @@
                         </select>
                         <a href="/surdo/map">Ver hospitais perto de mim</a>
                     </div>
-                    <div class="form-group col-3">
-                        <label for="uf">UF:</label>
-                        <input type="text" class="form-control" name="uf" disabled>
-                    </div>
-                    <div class="form-group col-3">
-                        <label for="uf">Cidade:</label>
-                        <input type="text" class="form-control" name="city" disabled>
-                    </div>
                 </div>
                 <h3>Selecione as datas em que estará disponível</h3>
                 <div class="row">
                     <div class="form-group col-4">
                         <label for="date1">Data 1:</label>
-                        <input type="date" class="form-control" name="date1" id="date1">
+                        <input type="date" class="form-control" name="date1" id="date1" required>
                     </div>
                     <div class="form-group col-4">
                         <label for="date2">Data 1:</label>
-                        <input type="date" class="form-control" name="date2" id="date2">
+                        <input type="date" class="form-control" name="date2" id="date2" required>
                     </div>
                     <div class="form-group col-4">
                         <label for="date3">Data 1:</label>
-                        <input type="date" class="form-control" name="date3" id="date3">
+                        <input type="date" class="form-control" name="date3" id="date3" required>
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-12">
                         <label for="obs">Observações ao médico</label>
-                        <textarea name="observations" id="obs" class="form-control"></textarea>
+                        <textarea name="observations" id="obs" class="form-control" required></textarea>
                     </div>
                 </div>
                 <button type=button class="btn btn-primary" id="sendbutton">Enviar</button>
@@ -113,6 +105,30 @@
         document.getElementById('bno').addEventListener('click', function () {
             document.querySelector('.confirm2').style.display = 'none';
         });
+    </script>
+    <script>
+        function validateForm() {
+            canSubmit = true
+            currentDate = new Date()
+            currentDate.setDate(currentDate.getDate() - 1)
+            console.log(currentDate)
+            date1 = new Date(document.querySelector("#date1").value)
+            date2 = new Date(document.querySelector("#date2").value)
+            date3 = new Date(document.querySelector("#date3").value)
+            if(date1 < currentDate) {
+                alert("A primeira data deve depois ou igual a hoje")
+                canSubmit = false
+            }
+            if(date2 < currentDate) {
+                alert("A segunda data deve depois ou igual a hoje")
+                canSubmit = false
+            }
+            if(date3 < currentDate) {
+                alert("A segunda data deve depois ou igual a hoje")
+                canSubmit = false
+            }
+            return canSubmit
+        }
     </script>
 </body>
 
