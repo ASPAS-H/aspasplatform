@@ -23,8 +23,14 @@ class DeafService():
     def getPendingConsults():
         consults = Consult.objects.filter(status=1)
         return consults
-
-
+    
     def getConsult(id):
-        return Consult.objects.get(id = id)
-        
+        try:
+            consult = Consult.objects.get(id=id)
+        except Consult.DoesNotExist:
+            consult = {"not_found": True}
+        return consult
+
+    def get_hospitals_consults(hospital_id):
+        hospitals = Consult.objects.filter(hospital_id=hospital_id)
+        return hospitals

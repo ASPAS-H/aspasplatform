@@ -21,9 +21,9 @@
 
             <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-item nav-link" href="solicitacoes">Solicitações de Consultas</a>
-                    <a class="nav-item nav-link" href="consultas">Interpretar Consultas</a>
-                    <a class="nav-item nav-link" href="pagamento">Pagamento</a>
+                    <a class="nav-item nav-link" href="/interpreter/solicitacoes">Solicitações de Consultas</a>
+                    <a class="nav-item nav-link" href="/interpreter/consultas">Interpretar Consultas</a>
+                    <a class="nav-item nav-link" href="/interpreter/pagamento">Pagamento</a>
                 </div>
             </div>
 
@@ -44,7 +44,7 @@
                 <div >
                     <p id="notes">{{consult.observations}}</p>
                 </div>
-                <h5>Modalidade: <spam style="color: red;">{{consult.modelity}}</spam></h5>
+                <h5>Modalidade: <spam class="text-danger"></spam>{{consult.getModelity}}</spam></h5>
             </div>    
             
             <div id="d-grid gap-2 d-md-block">

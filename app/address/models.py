@@ -1,6 +1,5 @@
 from django.db import models
 
-# Create your models here.
 class Address(models.Model):
 
     street = models.CharField(max_length=255)
@@ -10,6 +9,9 @@ class Address(models.Model):
     complement = models.CharField(max_length=255)
     city = models.CharField(max_length=255)
     country = models.CharField(max_length=255)
+
+    lat = models.DecimalField(null=True, max_digits=10, decimal_places=8)
+    lng = models.DecimalField(null=True, max_digits=10, decimal_places=8)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

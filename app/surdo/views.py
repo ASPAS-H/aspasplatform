@@ -13,17 +13,14 @@ import logging
 logger = logging.getLogger(__name__)
 
 def login(request):
-    if(request.method != 'POST'):
-        return render(request, 'auth/login.html')
+    return render(request, 'auth/login.html')
 
 def showIndex(request):
     return render(request, 'deaf_index.html')
 
-def showConsults(request):
-    return render(request, 'deaf_consults.html')
-
 def showMap(request):
-    return render(request, 'deaf_hospitals.html')
+    hospitals = AddressService.get_nearby_hospitals(request.user.address.id)
+    return render(request, 'deaf_hospitals.html', {"hospitals": hospitals})
 
 def showStatus(request):
     return render(request,'deaf_status.html',{'messages':'Hello world!'})
@@ -54,17 +51,27 @@ def showRegister(request):
             return render(request, 'deaf_register.html', {'errors': errors})
     return render(request, 'deaf_register.html')
 
-def newConsult(request):
-    for consult in DeafService.getPendingConsults():
-        logger.error(consult.observations)
+def newConsult(request, hospital=None):
+    if hospital == None:
+        logger.error("Sem id")
+    else:
+        logger.error("hospital", hospital)
     if request.method == "POST":
         consult_data = ConsultForm(request.POST)
         if consult_data.is_valid():
             consult = DeafService.createConsult(request.POST, request.user)
             return render(request, 'deaf_status.html', {'messages':'Consulta criada com sucesso [ID: ' + str(consult.id) + ']'})
         else:
-            hospitals = HospitalService.getAllHospitals()
+            hospitals = AddressService.get_nearby_hospitals(request.user.address.id)
             return render(request, 'deaf_newconsults.html', {"hospitals": hospitals, "errors": consult_data.errors})
 
-    hospitals = HospitalService.getAllHospitals()
+    hospitals = AddressService.get_nearby_hospitals(request.user.address.id)
     return render(request, 'deaf_newconsults.html', {"hospitals": hospitals})
+
+def view_consults(request):
+    consults = DeafService.getConsults(request.user)
+    return render(request, 'deaf_consults.html', {"consults": consults})
+
+def view_consult(request, consult_id):
+    consult = DeafService.getConsult(consult_id)
+    return render(request, 'deaf_consult.html', {"consult": consult})

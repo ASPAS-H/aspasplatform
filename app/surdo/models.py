@@ -17,7 +17,7 @@ class Deaf(models.Model):
         
 class Consult(models.Model):
     MODELITY_TYPES = [(0, 'LOCAL'), (1, 'VIRTUAL')]
-    STATUS = [(0, 'PENDING'), (1, 'AWAITING_INTERPRETER'), (2, 'SCHEDULED'), (3, 'FINISHED')]
+    STATUS = [(0, 'PENDING'), (1, 'AWAITING_INTERPRETER'), (2, 'SCHEDULED'), (3, 'FINISHED'), (4, 'FINISHED')]
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE)
@@ -31,3 +31,20 @@ class Consult(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     class Meta():
         db_table = "consults"
+    
+    def getStringStatus(self):
+        status = {
+            0: "AGUARDANDO HOSPITAL",
+            1: "AGUARDANDO INTERPRETE",
+            2: "AGENDADA",
+            3: "FINALIZADA",
+            4: "CANCELADA"
+        }
+        return status[self.status]
+    
+    def getModelity(self):
+        status = {
+            0: "PRESENCIAL",
+            1: "TELEMEDICINA"
+        }
+        return status[self.modelity]

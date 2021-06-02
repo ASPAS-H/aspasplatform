@@ -16,79 +16,77 @@
 
 <body>
     {% include 'navbar.html' %}
-
-    <div class="container mt-3">
-        <h1>Agende sua consulta</h1>
-        {% if errors %}
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            <strong>ERRO!</strong>
-            {% for error in errors %}
+    <section>
+        <div class="container mt-3">
+            <h1>Agende sua consulta</h1>
+            {% if errors %}
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <strong>ERRO!</strong>
+                {% for error in errors %}
                 {{ error }}
-            {% endfor %}
+                {% endfor %}
+            </div>
+            {% endif %}
+            <form action="/surdo/new/consult" onsubmit="return validateForm()" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="modelity" id="consultType" value="0">
+                        <label class="form-check-label" for="consultType">Presencialmente</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="modelity" value="1" id="consultType2">
+                        <label class="form-check-label" for="consultType2">Telemedicina</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-12">
+                        <label for="hospital">Hospital</label>
+                        <select name="hospital" id="hospital" required class="form-control">
+                            <option value="0" selected disabled>Selecione uma opção</option>
+                            {% for hospital in hospitals %}
+                                <option value="{{ hospital.id }}">{{ hospital.name }}</option>
+                            {% endfor %}
+                        </select>
+                        <a href="/surdo/map">Ver hospitais perto de mim</a>
+                    </div>
+                </div>
+                <h3>Selecione as datas em que estará disponível</h3>
+                <div class="row">
+                    <div class="form-group col-4">
+                        <label for="date1">Data 1:</label>
+                        <input type="date" class="form-control" name="date1" id="date1" required>
+                    </div>
+                    <div class="form-group col-4">
+                        <label for="date2">Data 1:</label>
+                        <input type="date" class="form-control" name="date2" id="date2" required>
+                    </div>
+                    <div class="form-group col-4">
+                        <label for="date3">Data 1:</label>
+                        <input type="date" class="form-control" name="date3" id="date3" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-12">
+                        <label for="obs">Observações ao médico</label>
+                        <textarea name="observations" id="obs" class="form-control" required></textarea>
+                    </div>
+                </div>
+                <button type=button class="btn btn-primary" id="sendbutton">Enviar</button>
         </div>
-        {% endif %}
-        <form action="/surdo/new/consult" method="post">
-            {% csrf_token %}
-            <div class="form-group">
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="modelity" id="consultType"
-                        value="0">
-                    <label class="form-check-label" for="consultType">Presencialmente</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="modelity"
-                        value="1" id="consultType2">
-                    <label class="form-check-label" for="consultType2">Telemedicina</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="form-group col-6">
-                    <label for="hospital">Hospital</label>
-                    <select name="hospital" id="hospital" required class="form-control">
-                        <option value="0" selected disabled>Selecione uma opção</option>
-                        {% for hospital in hospitals %}
-                            <option value="{{ hospital.id }}">{{ hospital.name }}</option>
-                        {% endfor %}
-                    </select>
-                    <a href="/surdo/map">Ver hospitais perto de mim</a>
-                </div>
-                <div class="form-group col-3">
-                    <label for="uf">UF:</label>
-                    <input type="text" class="form-control" name="uf" disabled>
-                </div>
-                <div class="form-group col-3">
-                    <label for="uf">Cidade:</label>
-                    <input type="text" class="form-control" name="city" disabled>
-                </div>
-            </div>
-            <h3>Selecione as datas em que estará disponível</h3>
-            <div class="row">
-                <div class="form-group col-4">
-                    <label for="date1">Data 1:</label>
-                    <input type="date" class="form-control" name="date1" id="date1">
-                </div>
-                <div class="form-group col-4">
-                    <label for="date2">Data 1:</label>
-                    <input type="date" class="form-control" name="date2" id="date2">
-                </div>
-                <div class="form-group col-4">
-                    <label for="date3">Data 1:</label>
-                    <input type="date" class="form-control" name="date3" id="date3">
-                </div>
-            </div>
-            <div class="row">
-                <div class="form-group col-12">
-                    <label for="obs">Observações ao médico</label>
-                    <textarea name="observations" id="obs" class="form-control"></textarea>
-                </div>
-            </div>
-            <button type="submit" class="btn btn-primary">Enviar</button>
+    </section>
+    <div class="confirm2">
+        <div class="confirmbox2">
+            <br>
+            <p>Voce tem centeza para criar uma nova consulta?</p>
+            <button type="submit" class="btn btn-primary" id="byes">Sim</button>
+            <button type=button class="btn btn-primary" id="bno">Nao</button>
+        </div>
     </div>
     </form>
-    </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -100,6 +98,38 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+    <script>
+        document.getElementById('sendbutton').addEventListener('click', function () {
+            document.querySelector('.confirm2').style.display = 'flex';
+        });
+        document.getElementById('bno').addEventListener('click', function () {
+            document.querySelector('.confirm2').style.display = 'none';
+        });
+    </script>
+    <script>
+        function validateForm() {
+            canSubmit = true
+            currentDate = new Date()
+            currentDate.setDate(currentDate.getDate() - 1)
+            console.log(currentDate)
+            date1 = new Date(document.querySelector("#date1").value)
+            date2 = new Date(document.querySelector("#date2").value)
+            date3 = new Date(document.querySelector("#date3").value)
+            if(date1 < currentDate) {
+                alert("A primeira data deve depois ou igual a hoje")
+                canSubmit = false
+            }
+            if(date2 < currentDate) {
+                alert("A segunda data deve depois ou igual a hoje")
+                canSubmit = false
+            }
+            if(date3 < currentDate) {
+                alert("A segunda data deve depois ou igual a hoje")
+                canSubmit = false
+            }
+            return canSubmit
+        }
+    </script>
 </body>
 
 </html>

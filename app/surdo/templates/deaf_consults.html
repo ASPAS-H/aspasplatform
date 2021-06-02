@@ -1,38 +1,41 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en-us">
+
 <head>
     <title>ASPAS</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/deaf_consults.css' %}">
 </head>
+
 <body>
-    <div class="c1">
-        <div class="p2">
-            <h1 class="text-right">ASPAS</h1>
+    {% include 'navbar.html' %}
+    <div class="container mt-2">
+        <h1>Minhas consultas</h1>
+        <div class="row justify-content-between">
+
+            {% for consult in consults %}
+            <div class="card col-5 mb-4 bg-secondary">
+                <h3 class="card-title">{{ consult.hospital.name }}</h3>
+                <div class="card-body">
+                    <p class="card-text"><b>Data:</b> {{ consult.date1|date:"d/m/Y" }}, {{ consult.date2|date:"d/m/Y" }}, {{ consult.date3|date:"d/m/Y" }}</p>
+                    <p class="card-text"><b>Obsevações</b></p>
+                    <textarea class="form-control" disabled>{{ consult.observations }}</textarea>
+                    {% if consult.status == 0 or consult.status == 1 or consult.status == 4 %}
+                        <p class="text-danger"><b>STATUS:</b> {{ consult.getStringStatus }}</p>
+                    {% else %}
+                        <p class="text-success"><b>STATUS:</b> {{ consult.getStringStatus }}</p>
+                    {% endif %}
+                    <div class="d-flex justify-content-end mt-2">
+                        <a href="/surdo/consult/{{ consult.id }}" class="btn btn-primary">Ver consulta</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
         </div>
     </div>
-    <div class="p1">
-        <h1>My Consults</h1>
-        <div class="c2">
-            <h3>Title 1</h3>
-            <p>Date: 2021-04-27</p>
-            <p>Information:</p>
-            <input type="text" placeholder="Information to appear here">
-            <div class="b1">
-                <button type="button">View Details</button>
-            </div>
-        </div>
-        <div class="c2">
-            <h3>Title 2</h3>
-            <p>Date: 2021-04-27</p>
-            <p>Information:</p>
-            <input type="text" placeholder="Information to appear here">
-            <div class="b1">
-                <button type="button">View Details</button>
-            </div>
-        </div>
     </div>
 </body>
+
 </html>
