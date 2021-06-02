@@ -51,14 +51,18 @@ def showRegister(request):
             return render(request, 'deaf_register.html', {'errors': errors})
     return render(request, 'deaf_register.html')
 
-def newConsult(request):
+def newConsult(request, hospital=None):
+    if hospital == None:
+        logger.error("Sem id")
+    else:
+        logger.error("hospital", hospital)
     if request.method == "POST":
         consult_data = ConsultForm(request.POST)
         if consult_data.is_valid():
             consult = DeafService.createConsult(request.POST, request.user)
             return render(request, 'deaf_status.html', {'messages':'Consulta criada com sucesso [ID: ' + str(consult.id) + ']'})
         else:
-            hospitals = HospitalService.getAllHospitals()
+            hospitals = AddressService.get_nearby_hospitals(request.user.address.id)
             return render(request, 'deaf_newconsults.html', {"hospitals": hospitals, "errors": consult_data.errors})
 
     hospitals = AddressService.get_nearby_hospitals(request.user.address.id)
