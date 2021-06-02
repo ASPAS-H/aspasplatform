@@ -1,6 +1,7 @@
 from django.db import models
 from account.models import User
 from hospital.models import Hospital
+from interpreter.models import Interpreter
 # Create your models here.
 class Deaf(models.Model):
 
@@ -27,6 +28,8 @@ class Consult(models.Model):
     modelity = models.IntegerField(choices = MODELITY_TYPES)
     status = models.IntegerField(choices= STATUS)
     observations = models.TextField(null = True)
+    interpreter = models.ForeignKey(Interpreter, on_delete=models.CASCADE, null=True)
+
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     class Meta():
