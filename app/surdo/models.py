@@ -29,6 +29,7 @@ class Consult(models.Model):
     status = models.IntegerField(choices= STATUS)
     observations = models.TextField(null = True)
     interpreter = models.ForeignKey(Interpreter, on_delete=models.CASCADE, null=True)
+    confirmed_date = models.DateField(null = True)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

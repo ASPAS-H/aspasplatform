@@ -8,6 +8,7 @@ from .services import DeafService
 from .forms import ConsultForm
 from address.services import AddressService
 from django.contrib.auth.hashers import make_password
+from django.contrib.auth.decorators import login_required
 
 import logging
 logger = logging.getLogger(__name__)
@@ -15,6 +16,8 @@ logger = logging.getLogger(__name__)
 def login(request):
     return render(request, 'auth/login.html')
 
+
+@login_required(redirect_field_name='', login_url='/account/login')
 def showIndex(request):
     return render(request, 'deaf_index.html')
 

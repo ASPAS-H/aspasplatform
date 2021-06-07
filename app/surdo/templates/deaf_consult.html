@@ -31,7 +31,9 @@
             {% endif %}
         </div>
         <div class="container mt-2">
-            <a href="" class="btn btn-primary">Confirmar</a>
+            {% if consult.status == 2 %}
+                <a href="" class="btn btn-primary">Confirmar</a>
+            {% endif %}
             <a href="" class="btn btn-secondary">Cancelar consulta</a>
             <label>* Limite de 2 dias antes da consulta</label>
         </div>
