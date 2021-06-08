@@ -32,17 +32,30 @@
             </script>
             {% endif %}
             <header class="d-flex justify-content-between">
-                <button><img src="{% static 'img/seta-esquerda.png' %}" alt="Botão Voltar" id="arrow"></button>
+                <h1>Crie uma conta</h1>
                 <img src="{% static 'img/logo_Final.png' %}" alt="Logo ASPAS" id="logo">
             </header>
 
 
-            <h1>Crie uma conta</h1>
+            
             <form action="/interpreter/register" method="post">
+                {% csrf_token %}
                 <div class="form-row">
-                    <div class="form-group col-12">
-                        <label for="name">Nome:</label>
+                    <div class="form-group col-12 col-md-6">
+                        <label for="name">Nome: </label>
                         <input type="text" name="name" class="form-control" placeholder="Nome Completo">
+                    </div>
+
+                    <div class="form-group col-12 col-md-6">
+                        <label for="name">Fluência em Libras: </label>
+                        <select name="librasFluence" id="librasFluence" class="form-control">
+                            <option value="0" disabled selected>Selecione uma Opção</option>
+                            <option value="1" >1</option>
+                            <option value="2" >2</option>
+                            <option value="3" >3</option>
+                            <option value="4" >4</option>
+                            <option value="5" >5</option>
+                        </select>
                     </div>
                 </div>
     

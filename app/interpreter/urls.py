@@ -10,7 +10,9 @@ urlpatterns = [
     path('info-solicitacoes/<int:id>', views.infoSolicitationView),
     path('info-datas/<int:id>', views.infoDatesView),
     path('solicitacoes', views.solicitationView),
-    path('interpreter/register', views.registerViewInterpreter),
+    path('register', views.registerViewInterpreter),
     path('pagamento', views.paymentView),
+    path('aceitar/<int:id>', views.updateAcceptConsult),
+    path('desmarcar/<int:id>', views.markOffConsult)
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
