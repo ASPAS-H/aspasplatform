@@ -12,7 +12,7 @@
 <body>
     {% include 'navbar.html' %}
     {% if consult.not_found %}
-        <h1 class="text-center text-danger">Consulta não encontrada</h1>
+        <h1 class="text-center text-danger">Consulta não encontrada. [ID: {{ consult.id }}]</h1>
         <p class="text-center"><a href="/surdo/consults" class="btn btn-primary">Voltar</a></p>
     {% else %}
         <div class="container mt-2">

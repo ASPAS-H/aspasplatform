@@ -10,6 +10,7 @@ urlpatterns = [
     path('map', views.showMap),
     path('register', views.showRegister),
     path('status', views.showStatus),
+    path('new/consult', views.newConsult),
     path('new/consult/', views.newConsult),
     path('consult/<int:consult_id>', views.view_consult)
 
