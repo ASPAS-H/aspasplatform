@@ -1,4 +1,5 @@
 from .models import Address
+from hospital.services import HospitalService
 from math import sin, cos, sqrt, atan2, radians
 import requests
 import os
@@ -34,13 +35,36 @@ class AddressService():
                 address.lng = cep["longitude"]
                 address.save()
 
-        return {"latitude": address.lat, "longitude": address.lng}
+        return address
     
     def get_cep_numbers(cep):
         cep_formatted = str(cep).replace('-', '')
         if len(cep_formatted) != 8:
             cep_formatted = "0" + cep_formatted
         return cep_formatted
+
+    def get_distance(address1, address2):
+        if address1.lat == None or address1.lng == None:
+            address1 = AddressService.getCoords(address1.id)
+
+        if address2.lat == None or address2.lng == None:
+            address2 = AddressService.getCoords(address2.id)
+
+        distance = AddressService.get_distance_between_cords(address1.lat, address1.lng, address2.lat, address2.lng)
+        return distance
+
+    def get_nearby_hospitals(address_id):
+        MAX_DISTANCE = 15
+        location = AddressService.getCoords(address_id)
+        hospitals = HospitalService.getHospitalsFromState(location.state)
+        nearby_hospitals = []
+
+        for hospital in hospitals:
+            distance = AddressService.get_distance(location, hospital.address)
+            if distance <= MAX_DISTANCE:
+                nearby_hospitals.append(hospital)
+        
+        return nearby_hospitals
 
     def get_distance_between_cords(latitude1, longitude1, latitude2, longitude2):
         # approximate radius of earth in km

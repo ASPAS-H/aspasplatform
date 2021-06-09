@@ -2,79 +2,73 @@
 <!DOCTYPE html>
 
 <html>
-
     <head>
-        <title>Interpretar Consultas</title>
+        <title>Consultas</title>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
         <link rel="stylesheet" href="{% static 'css/viewConsults.css' %}">
     </head>
 
     <body>
-
-        <header class="header">
-            <h1>Olá, Fulano!</h1>
-            <nav>
-                <ul class="menu">
-                    <li><a href="">Solicitações de Consultas </a></li>
-                    <li><a href="">Gerenciar Datas </a></li>
-                    <li><a href="">Interpretar Consulta</a></li>
-                </ul>
-            </nav>
-            <img src="{% static 'img/logo_Final.png' %}" alt="Logo ASPAS" id="logo">
-        </header>
-
-        <h2>Interpretar Consulta</h2>
-        <section class="flex">
-        
-            <div class="cards">
-                <h3>Fulano de tal</h3>
-                <h4>Data: xx/xx/xx</h4>
-                <h4>Observações:</h4>
-                <div class="notes">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos voluptatibus provident excepturi repellendus, iure delectus vero inventore eligendi repudiandae necessitatibus non ratione amet nemo optio. Suscipit doloremque quas voluptatibus sed. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cupiditate libero ab, corrupti nobis harum molestiae reprehenderit voluptatibus ullam facere repellat, repudiandae voluptatem aliquid praesentium eum consequatur dolor! A, totam amet.</p>
-                </div>
-                <button class="buttonVideoChat">Abrir Videochamada</button>
-            </div>
-
-
-            <div class="cards">
-                <h3>Fulano de tal</h3>
-                <h4>Data: xx/xx/xx</h4>
-                <h4>Observações:</h4>
-                <div class="notes">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos voluptatibus provident excepturi repellendus, iure delectus vero inventore eligendi repudiandae necessitatibus non ratione amet nemo optio. Suscipit doloremque quas voluptatibus sed.</p>
-                </div>
-                <button class="buttonVideoChat">Abrir Videochamada</button>
-            </div>
-
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <h3>Olá, Fulano</h3>
             
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-        </section>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link" href="solicitacoes">Solicitações de Consultas</a>
+                    <a class="nav-item nav-link" href="consultas">Interpretar Consultas</a>
+                    <a class="nav-item nav-link" href="pagamento">Pagamento</a>
+                </div>
+            </div>
 
-        <section class="flex">
+            <div class="text-right">
+                <img src="{% static 'img/logo_Final.png' %}" alt="Logo" class="mr-2">
+            </div>
+        </nav>
+
+        <div id="customize">
+            <h2>Interpretar Consulta</h2>
+
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+                
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Fulano de Tal</h5>
+                            <h6 class="card-title">Data: xx/xx/xx</h6>
+                            <h6 class="card-title">Observações:</h6>
+                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <a type="button" href="/interpreter/info-datas" class="btn btn-outline-primary">Editar</a>
+                                <a href="" class="btn btn-primary" type="button">Abrir Videochamada</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Fulano de Tal</h5>
+                            <h6 class="card-title">Data: xx/xx/xx</h6>
+                            <h6 class="card-title">Observações:</h6>
+                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                <a type="button" href="/interpreter/info-datas/{{consult.id}}" class="btn btn-outline-primary">Editar</a>
+                                <a href="" class="btn btn-primary" type="button">Abrir Videochamada</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
         
-            <div class="cards">
-                <h3>Fulano de tal</h3>
-                <h4>Data: xx/xx/xx</h4>
-                <h4>Observações:</h4>
-                <div class="notes">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos voluptatibus provident excepturi repellendus, iure delectus vero inventore eligendi repudiandae necessitatibus non ratione amet nemo optio. Suscipit doloremque quas voluptatibus sed.</p>
-                </div>
-                <button class="buttonVideoChat">Abrir Videochamada</button>
-            </div>
-
-
-            <div class="cards">
-                <h3>Fulano de tal</h3>
-                <h4>Data: xx/xx/xx</h4>
-                <h4>Observações:</h4>
-                <div class="notes">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos voluptatibus provident excepturi repellendus, iure delectus vero inventore eligendi repudiandae necessitatibus non ratione amet nemo optio. Suscipit doloremque quas voluptatibus sed. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam, quia voluptatem, animi dolore voluptates totam libero assumenda porro ipsam soluta placeat accusantium, qui at? Maiores eos doloribus laudantium necessitatibus nulla! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia doloribus, natus quo blanditiis explicabo quibusdam pariatur in earum perferendis veritatis porro exercitationem ullam ipsam! Eligendi sed eveniet ipsum laudantium ad!</p>
-                </div>
-                <button class="buttonVideoChat">Abrir Videochamada</button>
-            </div>
-
-        </section>
-
     </body>
 </html>

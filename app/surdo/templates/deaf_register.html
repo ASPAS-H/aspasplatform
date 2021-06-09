@@ -38,33 +38,33 @@
                 <img src="{% static 'img/logo.png' %}" alt="Logo" class="deaf-logo">
             </div>
         </header>
-        <form action="/surdo/register" method="post">
+        <form action="/surdo/register" onsubmit="return validateForm()" method="post">
             {% csrf_token %}
             <input type="hidden" name="health_plan" value="1">
             <div class="form-row">
                 <div class="form-group col-12">
                     <label for="name">Nome:</label>
-                    <input type="text" name="name" class="form-control" placeholder="Nome Completo">
+                    <input type="text" name="name" class="form-control" placeholder="Nome Completo" required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-12 col-md-6">
                     <label for="borndate">Data de nascimento:</label>
-                    <input type="date" name="born_date" class="form-control">
+                    <input type="date" name="born_date" class="form-control" required>
                 </div>
                 <div class="form-group col-12 col-md-6">
                     <label for="cpf">CPF:</label>
-                    <input type="text" name="cpf" class="form-control" placeholder="CPF">
+                    <input type="number" name="cpf" class="form-control" placeholder="CPF" required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-12 col-md-4">
                     <label for="phone">Telefone:</label>
-                    <input type="number" name="phone" class="form-control" placeholder="Telefone">
+                    <input type="number" name="phone" class="form-control" placeholder="Telefone" required>
                 </div>
                 <div class="form-group col-12 col-md-4">
                     <label for="genre">Gênero:</label>
-                    <select name="gender" id="genre" class="form-control">
+                    <select name="gender" id="genre" class="form-control" required>
                         <option value="-1" disabled selected>Selecione um genero</option>
                         <option value="0">Masculino</option>
                         <option value="1">Feminino</option>
@@ -74,52 +74,53 @@
                 </div>
                 <div class="form-group col-12 col-md-4">
                     <label for="zip">CEP:</label>
-                    <input type="text" name="zipCode" class="form-control" placeholder="CEP">
+                    <input type="number" name="zipCode" id="zipCode" onkeyup="validateZIP()" class="form-control"
+                        placeholder="CEP" required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-12 col-md-6">
                     <label for="zip">Endereço:</label>
-                    <input type="text" name="street" class="form-control" placeholder="Endereço">
+                    <input type="text" name="street" class="form-control" id="address" placeholder="Endereço" required>
                 </div>
                 <div class="form-group col-12 col-md-6">
                     <label for="complement">Complemento:</label>
-                    <input type="text" name="complement" class="form-control" placeholder="Complemento">
+                    <input type="text" name="complement" class="form-control" placeholder="Complemento" required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-12 col-md-4">
                     <label for="vile">Bairro:</label>
-                    <input type="text" name="vile" class="form-control" placeholder="Bairro">
+                    <input type="text" name="vile" class="form-control" id="vile" placeholder="Bairro" required>
                 </div>
                 <div class="form-group col-12 col-md-4">
                     <label for="city">Cidade:</label>
-                    <input type="text" name="city" class="form-control" placeholder="Cidade">
+                    <input type="text" name="city" class="form-control" id="city" placeholder="Cidade" required>
                 </div>
                 <div class="form-group col-12 col-md-4">
                     <label for="zip">UF:</label>
-                    <input type="text" name="state" class="form-control" placeholder="UF">
+                    <input type="text" name="state" class="form-control" id="uf" placeholder="UF" required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-12 col-md-6">
                     <label for="mail">Email:</label>
-                    <input type="email" name="email" class="form-control" placeholder="Email">
+                    <input type="email" name="email" id="email" class="form-control" placeholder="Email" required>
                 </div>
                 <div class="form-group col-12 col-md-6">
                     <label for="confirm_email">Confirmar E-Mail:</label>
-                    <input type="email" name="confirm_email" class="form-control" placeholder="Confirme seu email">
+                    <input type="email" name="confirm_email" id="confirm_email" class="form-control" placeholder="Confirme seu email" required>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-12 col-md-6">
                     <label for="mail">Senha:</label>
-                    <input type="password" name="password" class="form-control" placeholder="Senha">
+                    <input type="password" name="password" id="password" class="form-control" placeholder="Senha" required>
                 </div>
                 <div class="form-group col-12 col-md-6">
                     <label for="confirm_email">Confirmar Senha:</label>
-                    <input type="password" name="confirm_password" class="form-control"
-                        placeholder="Confirme seu email">
+                    <input type="password" name="confirm_password" id="confirm_password" class="form-control"
+                        placeholder="Confirme seu email" required>
                 </div>
             </div>
             <div class="form-row">
@@ -135,7 +136,72 @@
             </div>
         </form>
     </div>
-    <script src="{% static 'js/main.js' %}"></script>
+    <script>
+        let url = {
+            url: "https://viacep.com.br/ws/",
+            filled: false
+        }
+
+        function validateZIP() {
+            let zip = document.getElementById("zipCode").value;
+            if (zip.length == 8) {
+                if (url.filled == false) {
+                    url.url += zip + "/json";
+                    url.filled = true;
+                    updateAddress();
+                }
+            } else {
+                url.url = "https://viacep.com.br/ws/",
+                    url.filled = false;
+            }
+        }
+
+        function updateAddress() {
+            fetch(url.url)
+                .then(function (response) {
+                    response.json().then(function (data) {
+                        if (data) {
+                            updateFields(data)
+                        }
+                    });
+                })
+                .catch(function (err) {
+                    console.error('Failed retrieving information', err);
+                });
+        }
+
+        function updateFields(data) {
+            document.querySelector('#address').value = data.logradouro;
+            document.querySelector('#city').value = data.localidade;
+            document.querySelector('#uf').value = data.uf
+            document.querySelector('#vile').value = data.bairro;
+        }
+
+        function validateForm() {
+            canSubmit = true;
+            password = document.querySelector("#password").value;
+            confirm_password = document.querySelector("#confirm_password").value;
+
+            email = document.querySelector("#email").value;
+            confirm_email = document.querySelector("#confirm_email").value;
+
+            terms = document.querySelector("#read_terms")
+
+            if(password != confirm_password) {
+                alert("As senhas não conferem")
+                canSubmit = false
+            }
+            if(email != confirm_email) {
+                alert("Os e-mails não conferem")
+                canSubmit = false
+            }
+            if(terms.checked == false){
+                alert("Você precisa concordar com os termos de serviço")
+                canSubmit = false
+            }
+            return canSubmit
+        }
+    </script>
 </body>
 
 </html>

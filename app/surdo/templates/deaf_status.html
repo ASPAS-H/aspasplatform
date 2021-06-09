@@ -4,22 +4,27 @@
 <head>
     <title>ASPAS</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'css/deaf_status.css' %}">
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/deaf_consults.css' %}">
+    <style>
+        body {
+            margin: 50px;
+            padding: 0px;
+        }
+        a {
+            color: white;
+        }
+    </style>
 </head>
 <body>
-    <div class="c1">
-        <div class="p2">
-            <h1 class="text-left">ASPAS</h1>
-        </div>
-    </div>
-    <div class="p1">
+    <img src="{% static 'img/logo.png' %}" alt="Logo" class="deaf-logo mr-2"><br>
+    <div class="d-absolute">
         {% if messages %}
         <br>
-        <h1>{{ messages }}</h1>
+        <h1 class="text-left">{{ messages }}</h1>
         <br>
         {% endif %}
     </div>
-    <button name="goback" id="goback"><a href="../../account/login">Voltar</a></button>
+    <button name="goback" id="goback" class="btn btn-primary"><a href="../../account/login">Voltar</a></button>
 </body>
 </html>

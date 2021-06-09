@@ -2,6 +2,8 @@ from django.db import models
 from account.models import User
 from address.models import Address
 
+# Create your models here.
+
 class Hospital(models.Model):
 
     name = models.CharField(max_length=255)

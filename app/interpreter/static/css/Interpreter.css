@@ -12,7 +12,6 @@ body{
     border: 0px;
     border-radius: 5px;
     font-weight: bold;
-    cursor: pointer;
 }
 
 #parte_cima{
@@ -57,5 +56,4 @@ li{
     background-color: rgb(150, 170, 184);
     font-size: 15px;
     font-weight: bold;
-    cursor: pointer;
 }

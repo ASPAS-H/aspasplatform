@@ -22,7 +22,6 @@ body, ul, li{
     font-size: 18px;
 }
 
-
 a{
     text-decoration: none;
     color: #000;
@@ -79,16 +78,6 @@ h5{
     margin-bottom: 50px;
 }
 
-.buttons{
-    border: 0px;
-    border-radius: 5px;
-    margin-top: 10px;
-    height: 30px;
-    background-color: rgb(70, 0, 182);
-    color: white;
-    cursor: pointer;
-    margin-right: 15px;
-}
 
 #ajust{
     display: flex;
@@ -104,3 +93,4 @@ section{
 body{
     margin-bottom: 50px;
 }
+
