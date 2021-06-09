@@ -14,7 +14,7 @@
     <div class="container mt-2">
         <h1>Minhas consultas</h1>
         <div class="row justify-content-between">
-
+        {% if consults %}
             {% for consult in consults %}
             <div class="card col-5 mb-4 bg-secondary">
                 <h3 class="card-title">{{ consult.hospital.name }}</h3>
@@ -27,9 +27,9 @@
                     <p class="card-text"><b>Obsevações</b></p>
                     <textarea class="form-control" disabled>{{ consult.observations }}</textarea>
                     {% if consult.status == 0 or consult.status == 1 or consult.status == 4 %}
-                        <p class="text-danger"><b>STATUS:</b> {{ consult.getStringStatus }}</p>
+                        <p class="text-danger"><b>STATUS: </b> {{ consult.getStringStatus }}</p>
                     {% else %}
-                        <p class="text-success"><b>STATUS:</b> {{ consult.getStringStatus }}</p>
+                        <p class="text-success"><b>STATUS: </b> {{ consult.getStringStatus }}</p>
                     {% endif %}
                     <div class="d-flex justify-content-end mt-2">
                         {% if consult.modelity == 1 and consult.status == 2 and consult.confirmed_date != None %}
@@ -40,6 +40,9 @@
                 </div>
             </div>
             {% endfor %}
+        {% else %}
+            <h4>Sua consulta esta vazia. <a href="/surdo/new/consult/">Agende uma nova consulta.</a></h4>
+        {% endif %}
         </div>
     </div>
     </div>

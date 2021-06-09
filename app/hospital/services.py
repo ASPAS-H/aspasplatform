@@ -1,6 +1,8 @@
 from .models import Hospital
 from address.models import Address
 
+# Create your services here.
+
 import logging
 logger = logging.getLogger(__name__)
 

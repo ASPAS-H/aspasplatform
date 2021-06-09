@@ -1,7 +1,12 @@
 from django.shortcuts import render
 
 # Create your views here.
-def hospital_index(request):
+
+def showIndex(request):
     return render(request, "hospital_index.html")
-def hospital_informacoes(request):
-    return render(request, "hospital_informacoes.html")
+
+def showInfo(request):
+    return render(request, "hospital_info.html")
+
+def showTest(request):
+    return render(request, "hospital_new.html")

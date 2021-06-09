@@ -18,7 +18,7 @@ class Deaf(models.Model):
         
 class Consult(models.Model):
     MODELITY_TYPES = [(0, 'LOCAL'), (1, 'VIRTUAL')]
-    STATUS = [(0, 'PENDING'), (1, 'AWAITING_INTERPRETER'), (2, 'SCHEDULED'), (3, 'FINISHED'), (4, 'FINISHED')]
+    STATUS = [(0, 'PENDING'), (1, 'AWAITING_INTERPRETER'), (2, 'SCHEDULED'), (3, 'FINISHED'), (4, 'CANCELED')]
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE)
