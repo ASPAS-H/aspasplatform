@@ -41,3 +41,9 @@ class DeafService():
     def get_hospitals_consults(hospital_id):
         hospitals = Consult.objects.filter(hospital_id=hospital_id)
         return hospitals
+
+    def change_consult_status(consult, status):
+        consult = DeafService.getConsult(consult)
+        consult.status = status
+        consult.save()
+        return consult

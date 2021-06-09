@@ -9,6 +9,7 @@ from .forms import ConsultForm
 from address.services import AddressService
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.decorators import login_required
+from datetime import datetime, timedelta, date
 
 import logging
 logger = logging.getLogger(__name__)
@@ -54,11 +55,7 @@ def showRegister(request):
             return render(request, 'deaf_register.html', {'errors': errors})
     return render(request, 'deaf_register.html')
 
-def newConsult(request, hospital=None):
-    if hospital == None:
-        logger.error("Sem id")
-    else:
-        logger.error("hospital", hospital)
+def newConsult(request):
     if request.method == "POST":
         consult_data = ConsultForm(request.POST)
         if consult_data.is_valid():
@@ -78,3 +75,30 @@ def view_consults(request):
 def view_consult(request, consult_id):
     consult = DeafService.getConsult(consult_id)
     return render(request, 'deaf_consult.html', {"consult": consult})
+
+def cancel_consult(request, consult_id):
+    consult = DeafService.getConsult(consult_id)
+
+    date = consult.confirmed_date
+
+    if consult.status == 4:
+        return render(request, 'deaf_consult.html', {"consult": consult, "error": "Está cosulta já esta cancelada"})
+
+    if date == None:
+        return render(request, 'deaf_consult.html', {"consult": consult, "error": "Está cosulta ainda não foi agendada"})
+    
+    maxDateToCancel = date - timedelta(days=1)
+    
+    logger.error(str(date.today()))
+    if date.today() >= maxDateToCancel:
+        return render(request, 'deaf_consult.html', {"consult": consult, "error": "O prazo para cancelamento são 2 dias antes da consulta"})
+    
+    if request.user.id != consult.user.id:
+        return render(request, 'deaf_consult.html', {"consult": consult, "error": "Você não é o paciente desta consulta"}) 
+    
+    consult = DeafService.change_consult_status(consult.id, 4)
+    return render(request, 'deaf_consult.html', {"consult": consult, "success": "Consulta cancelada com sucesso!"})
+
+def newConsultWithHospital(request, hospital_id):
+    hospitals = AddressService.get_nearby_hospitals(request.user.address.id)
+    return render(request, 'deaf_newconsults.html', {"hospitals": hospitals, "hospital_id": hospital_id})

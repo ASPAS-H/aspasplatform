@@ -34,21 +34,25 @@
                 {% csrf_token %}
                 <div class="form-group">
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="modelity" id="consultType" value="0">
+                        <input class="form-check-input" type="radio" name="modelity" id="consultType" value="0" required>
                         <label class="form-check-label" for="consultType">Presencialmente</label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="modelity" value="1" id="consultType2">
+                        <input class="form-check-input" type="radio" name="modelity" value="1" id="consultType2" required>
                         <label class="form-check-label" for="consultType2">Telemedicina</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="form-group col-12">
                         <label for="hospital">Hospital</label>
-                        <select name="hospital" id="hospital" required class="form-control">
-                            <option value="0" selected disabled>Selecione uma opção</option>
+                        <select name="hospital" id="selectHospital" required class="form-control">
+                            <option value="0">Selecione uma opção</option>
                             {% for hospital in hospitals %}
-                                <option value="{{ hospital.id }}">{{ hospital.name }}</option>
+                                {% if hospital_id and hospital_id == hospital.id %}
+                                    <option value="{{ hospital.id }}" selected>{{ hospital.name }}</option>
+                                {% else %}
+                                    <option value="{{ hospital.id }}">{{ hospital.name }}</option>
+                                {% endif %}
                             {% endfor %}
                         </select>
                         <a href="/surdo/map">Ver hospitais perto de mim</a>
@@ -115,6 +119,7 @@
             date1 = new Date(document.querySelector("#date1").value)
             date2 = new Date(document.querySelector("#date2").value)
             date3 = new Date(document.querySelector("#date3").value)
+            hospital = document.querySelector("#selectHospital").value
             if(date1 < currentDate) {
                 alert("A primeira data deve depois ou igual a hoje")
                 canSubmit = false
@@ -124,7 +129,11 @@
                 canSubmit = false
             }
             if(date3 < currentDate) {
-                alert("A segunda data deve depois ou igual a hoje")
+                alert("A terceira data deve depois ou igual a hoje")
+                canSubmit = false
+            }
+            if(hospital == "0"){
+                alert("Selecione o hospital")
                 canSubmit = false
             }
             return canSubmit
