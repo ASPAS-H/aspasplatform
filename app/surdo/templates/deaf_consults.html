@@ -19,7 +19,11 @@
             <div class="card col-5 mb-4 bg-secondary">
                 <h3 class="card-title">{{ consult.hospital.name }}</h3>
                 <div class="card-body">
-                    <p class="card-text"><b>Data:</b> {{ consult.date1|date:"d/m/Y" }}, {{ consult.date2|date:"d/m/Y" }}, {{ consult.date3|date:"d/m/Y" }}</p>
+                    {% if consult.confirmed_date != None %}
+                        <p class="card-text"><b>Data:</b> {{ consult.confirmed_date|date:"d/m/Y" }}</p>
+                    {% else %}
+                        <p class="card-text"><b>Datas:</b> {{ consult.date1|date:"d/m/Y" }}, {{ consult.date2|date:"d/m/Y" }}, {{ consult.date3|date:"d/m/Y" }}</p>
+                    {% endif %}
                     <p class="card-text"><b>Obsevações</b></p>
                     <textarea class="form-control" disabled>{{ consult.observations }}</textarea>
                     {% if consult.status == 0 or consult.status == 1 or consult.status == 4 %}
@@ -28,6 +32,9 @@
                         <p class="text-success"><b>STATUS:</b> {{ consult.getStringStatus }}</p>
                     {% endif %}
                     <div class="d-flex justify-content-end mt-2">
+                        {% if consult.status == 2 and consult.confirmed_date != None %}
+                            <a href="#" onclick="return alert('Em breve')" class="text-primary mr-2 mt-1 font-weight-bold">Abrir video chamada</a>
+                        {% endif %}
                         <a href="/surdo/consult/{{ consult.id }}" class="btn btn-primary">Ver consulta</a>
                     </div>
                 </div>
