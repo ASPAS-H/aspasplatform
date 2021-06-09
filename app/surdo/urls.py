@@ -5,6 +5,7 @@ from django.conf import settings
 from . import views
 
 urlpatterns = [
+    path('', views.showIndex),
     path('/consults', views.view_consults),
     path('/map', views.showMap),
     path('/register', views.showRegister),
