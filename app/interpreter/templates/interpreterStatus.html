@@ -1,4 +1,5 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,13 +16,13 @@
               <div class="modal-content">
 
                     <div class="modal-header">
-                        <h2>ASPAS</h2>
+                        <img src="{% static 'img/logo_Final.png' %}" alt="Logo">
                     </div>
 
                     <div class="modal-body">
                         {% if messages %}
                         <br>
-                        <h3>{{ messages }}</h3>
+                        <h4>{{ messages }}</h4>
                         <br>
                         {% endif %}
                     </div>

@@ -5,6 +5,7 @@
 <html>
     <head>
         <title>Informações</title>
+        
         <meta charset="utf-8">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
         <link rel="stylesheet" href="{% static 'css/infoDatesView.css' %}">
@@ -31,25 +32,23 @@
                 <a href="/interpreter/"><img src="{% static 'img/logo_Final.png' %}" alt="Logo" class="mr-2" id="logo"></a>
             </div>
         </nav>
-        
-        <section class="flex">
-            <h1>Informações</h1>
 
+
+        
+        <section>
+            
+            <h1>Informações</h1>
             <h2>{{consult.user.name}}</h2>
 
             <div>
-                <h4>Datas: {{consult.date1|date:"d/m/Y"}}</h4>
-
-                <h4>Observações</h4>
-                <div >
-                    <p id="notes">{{consult.observations}}</p>
-                </div>
+                <h4>Data:</h4>
+                <p>{{consult.date1|date:"d/m/Y"}}</p>
+                <h4>Observações:</h4>
+                <textarea class="form-control" disabled>{{consult.observations}}</textarea>
                 <h5>Modalidade: <spam class="text-danger">{{consult.getModelity}}</spam></h5>
             </div>    
             
             <div id="d-grid gap-2 d-md-block">
-                <a href="" class="btn btn-primary">Confirmar</a>
-
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                     Desmarcar

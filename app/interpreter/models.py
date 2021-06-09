@@ -1,5 +1,6 @@
 from django.db import models
 from account.models import User
+#from surdo.models import Consult
 # Create your models here.
 class Interpreter(models.Model):
 
@@ -13,3 +14,7 @@ class Interpreter(models.Model):
     
     class Meta():
         db_table = "interpreter"
+
+#class RejectedConsults(models.Model):
+    #consult = models.ForeignKey(Consult, on_delete=models.CASCADE)
+    #interpreter = models.ForeignKey(Interpreter, on_delete=models.CASCADE)

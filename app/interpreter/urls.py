@@ -13,6 +13,7 @@ urlpatterns = [
     path('register', views.registerViewInterpreter),
     path('pagamento', views.paymentView),
     path('aceitar/<int:id>', views.updateAcceptConsult),
-    path('desmarcar/<int:id>', views.markOffConsult)
+    path('desmarcar/<int:id>', views.markOffConsult),
+    #path('rejeitar/<int:id>', views.addRejectConsult)
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

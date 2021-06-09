@@ -1,4 +1,5 @@
 from django.forms.widgets import NullBooleanSelect
+from django.http import request
 from account.models import User
 from surdo.models import Consult
 from django.shortcuts import render
@@ -16,7 +17,8 @@ logger = logging.getLogger(__name__)
 @login_required(redirect_field_name='', login_url='/account/login')
 def solicitationView(request):
     consults = DeafService.getPendingConsults()
-    return render(request,'solicitationView.html', {'consults':consults})
+    #rejectedConsults = InterpreterService.getRejectedConsults(request.user.id)
+    return render(request,'solicitationView.html', {'consults':consults})#, {'rejectedConsults':rejectedConsults}
 
 
 @login_required(redirect_field_name='', login_url='/account/login')
@@ -103,3 +105,11 @@ def markOffConsult(request,id):
 def infoDatesView(request,id):
     consult = DeafService.getConsult(id)
     return render(request,'infoDatesView.html', {'consult':consult})
+
+
+#def addRejectConsult(request,id):
+    
+
+    #consults = DeafService.getPendingConsults()
+    #rejectedConsults = InterpreterService.getRejectedConsults(request.user.id)
+    #return render(request,'solicitationView.html', {'consults':consults}, {'rejectedConsults':rejectedConsults})

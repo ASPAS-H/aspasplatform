@@ -32,18 +32,16 @@
             </div>
         </nav>
         
-        <section class="flex">
+        <section>
             <h1>Informações</h1>
 
             <h2>{{consult.user.name}}</h2>
 
             <div>
-                <h4>Datas: {{consult.date1|date:"d/m/Y"}}</h4>
-
+                <h4>Data:</h4>
+                <p>{{consult.date1|date:"d/m/Y"}}</p>
                 <h4>Observações</h4>
-                <div >
-                    <p id="notes">{{consult.observations}}</p>
-                </div>
+                <textarea class="form-control" disabled>{{consult.observations}}</textarea>
                 <h5>Modalidade: <spam class="text-danger">{{consult.getModelity}}</spam></h5>
             </div>    
             <div id="d-grid gap-2 d-md-block">
@@ -66,7 +64,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
-                            <button type="button" class="btn btn-primary">Sim,Rejeitar</button>
+                            <a type="button" href="/interpreter/rejeitar/{{consult.id}}" class="btn btn-primary">Sim,Rejeitar</a>
                         </div>
                     </div>
                     </div>

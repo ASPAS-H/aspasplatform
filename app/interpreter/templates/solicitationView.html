@@ -44,7 +44,8 @@
                     <h5 class="card-title">{{consult.user.name}}</h5>
                     <h6 class="card-title">Data: {{consult.date1|date:"d/m/Y"}}</h6>
                     <h6 class="card-title">Observações:</h6>
-                    <p class="card-text">{{consult.observations}}</p>
+                    <textarea class="form-control" disabled>{{consult.observations}}</textarea>
+                    <br>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                       
                       <a href="/interpreter/info-solicitacoes/{{consult.id}}" class="btn btn-primary">Ver Mais</a>
