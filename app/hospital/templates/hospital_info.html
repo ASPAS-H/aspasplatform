@@ -1,43 +1,33 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en-us">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Informações - Hispital</title>
-    <link rel="stylesheet" href="../static/css/informacoes.css">
+    <title>ASPAS</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/hospital_style.css' %}">
 </head>
+
 <body>
-    <header class="header-info">
-        <div>
-            <button id="buttonBack"><img src="../static/img/seta-esquerda.png" alt="seta para seta-esquerda" id="arrow"></button>
+    {% include 'navbar2.html' %}
+    <div class="container mt-2">
+        <h1><b>Informacoes</b></h1>
+        <h1>Fulano</h1>
+        <h4>Datas sugeridas pelo paciente:</h4>
+        00/00/00, 00/00/00, 00/00/00<br>
+        <h3>Observacoes</h3>
+        <textarea class="form-control" disabled>Estou com doente</textarea>
+        Modalidade: <div class="text-danger">Telemedicina/Presencial</div><br>
+        <p>Data da consulta:</p>
+        <div class="row">
+            <div class="form-group col-4">
+                <input type="date" class="form-control" name="confirmdata" id="confirmdata">
+            </div>
         </div>
-        <h1 id="ola-hosp">Hospital!</h1>
-        <nav>
-            <ul class="menu">
-                <li><a href="">Solicitações de Consultas </a></li>
-                <li><a href="">Gerenciar Datas </a></li>
-                <li><a href="">Interpretar Consulta</a></li>
-                <li><a href="">Videochamada com intérprete</a></li>
-            </ul>
-        </nav>
-        <img src="../static/img/logo.png" alt="Logo ASPAS" id="logo">
-    </header>
-
-    <h1>Informações</h1>
-    <h2>Datas</h2>
-
-    <div>
-        <label>
-            <input type="radio" name="data1" value="data1" checked>00/00/0000
-        </label>
-        <label>
-            <input type="radio" name="data1" value="data1">00/00/0000
-        </label>
-        <label>
-            <input type="radio" name="data1" value="data1">00/00/0000
-        </label>
+        <a href="patient" class="btn btn-outline-primary">Informacoes do paciente</a>
+        <button class="btn btn-primary" name="confirm" id="confirm">Confirmar</button>
     </div>
-    
 </body>
+
 </html>

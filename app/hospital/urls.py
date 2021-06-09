@@ -6,14 +6,14 @@ from . import views
 # Create your urls here.
 
 urlpatterns = [
-<<<<<<< HEAD
-    path('hospital', views.hospital_index),
-    path('informacoes', views.hospital_informacoes),
-    path('consultas', views.hospital_consultas),    
-=======
     path('', views.showIndex),
     path('info', views.showInfo),
     path('test',views.showTest),
->>>>>>> 5bbf7e0380d97804437e603abc406541ad6bd345
-
+    path('consults', views.showConsults),    
+    path('patient', views.showPatientDetails),
+    path('manage',views.showManage),
+    path('videocall',views.showVideocall),
+    path('payment',views.showPayment),
+    path('consultdata',views.showConsultData),
+    
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
