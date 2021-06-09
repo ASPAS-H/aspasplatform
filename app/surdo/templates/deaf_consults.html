@@ -32,7 +32,7 @@
                         <p class="text-success"><b>STATUS:</b> {{ consult.getStringStatus }}</p>
                     {% endif %}
                     <div class="d-flex justify-content-end mt-2">
-                        {% if consult.status == 2 and consult.confirmed_date != None %}
+                        {% if consult.modelity == 1 and consult.status == 2 and consult.confirmed_date != None %}
                             <a href="#" onclick="return alert('Em breve')" class="text-primary mr-2 mt-1 font-weight-bold">Abrir video chamada</a>
                         {% endif %}
                         <a href="/surdo/consult/{{ consult.id }}" class="btn btn-primary">Ver consulta</a>
