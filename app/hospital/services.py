@@ -1,5 +1,6 @@
 from .models import Hospital
 from address.models import Address
+from surdo.models import Consult
 
 # Create your services here.
 
@@ -23,3 +24,9 @@ class HospitalService():
                 hospitals.append(hospital)
                 
         return hospitals
+
+    def get_pending_consults_from_hospital(hospital_id):
+        try:
+            return Consult.objects.filter(hospital_id = hospital_id, status=0)
+        except Consult.DoesNotExist:
+            return []

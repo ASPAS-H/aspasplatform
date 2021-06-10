@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from surdo.services import DeafService
+from .services import HospitalService
 
 # Create your views here.
 
@@ -7,7 +8,7 @@ def showIndex(request):
     return render(request, "hospital_index.html")
 
 def showConsults(request):
-    consults = DeafService.get_hospitals_consults(1)
+    consults = HospitalService.get_pending_consults_from_hospital(2)
     return render(request, "hospital_consults.html", {"consults": consults})
 
 def showInfo(request):

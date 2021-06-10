@@ -1,6 +1,6 @@
 {% load static %}
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <img src="{% static 'img/logo.png' %}" alt="Logo" class="deaf-logo mr-2">
+    <a href="/hospital"><img src="{% static 'img/logo.png' %}" alt="Logo" class="deaf-logo mr-2"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
         aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -14,6 +14,6 @@
         </div>
     </div>
     <div class="text-right">
-        <a class="navbar-brand" href="#">User</a>
+        <a class="navbar-brand" href="#">Olá, {{ user.getFirstName }}</a>
     </div>
 </nav>

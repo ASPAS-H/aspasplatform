@@ -7,13 +7,13 @@ from . import views
 
 urlpatterns = [
     path('', views.showIndex),
-    path('info', views.showInfo),
-    path('test',views.showTest),
-    path('consults', views.showConsults),    
-    path('patient', views.showPatientDetails),
-    path('manage',views.showManage),
-    path('videocall',views.showVideocall),
-    path('payment',views.showPayment),
-    path('consultdata',views.showConsultData),
+    path('/info', views.showInfo),
+    path('/test',views.showTest),
+    path('/consults', views.showConsults),    
+    path('/patient', views.showPatientDetails),
+    path('/manage',views.showManage),
+    path('/videocall',views.showVideocall),
+    path('/payment',views.showPayment),
+    path('/consultdata',views.showConsultData),
     
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
