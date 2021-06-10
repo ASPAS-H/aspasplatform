@@ -52,3 +52,11 @@ class Consult(models.Model):
             1: "TELEMEDICINA"
         }
         return status[self.modelity]
+
+class RejectedConsults(models.Model):
+    consult = models.ForeignKey(Consult, on_delete=models.CASCADE)
+    interpreter = models.ForeignKey(Interpreter, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta():
+        db_table = 'reject_consults'

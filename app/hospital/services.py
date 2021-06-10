@@ -30,3 +30,10 @@ class HospitalService():
             return Consult.objects.filter(hospital_id = hospital_id, status=0)
         except Consult.DoesNotExist:
             return []
+
+    #for videocall screen
+    #def get_consults_accepted_by_interpreters(hospital_id):
+    #    try:
+    #        return Consult.objects.filter(hospital_id = hospital_id, status=2)
+    #    except Consult.DoesNotExist:
+    #        return []

@@ -1,4 +1,4 @@
-from django.forms.widgets import NullBooleanSelect
+from surdo.models import RejectedConsults
 from django.http import request
 from account.models import User
 from surdo.models import Consult
@@ -16,9 +16,8 @@ logger = logging.getLogger(__name__)
 
 @login_required(redirect_field_name='', login_url='/account/login')
 def solicitationView(request):
-    consults = DeafService.getPendingConsults()
-    #rejectedConsults = InterpreterService.getRejectedConsults(request.user.id)
-    return render(request,'solicitationView.html', {'consults':consults})#, {'rejectedConsults':rejectedConsults}
+    consults = DeafService.getPendingConsultsForInterpreter(request.user.id)
+    return render(request,'solicitationView.html', {'consults':consults})
 
 
 @login_required(redirect_field_name='', login_url='/account/login')
@@ -107,9 +106,14 @@ def infoDatesView(request,id):
     return render(request,'infoDatesView.html', {'consult':consult})
 
 
-#def addRejectConsult(request,id):
+def addRejectConsult(request,id):
     
+    
+    consults = DeafService.getPendingConsults()
 
-    #consults = DeafService.getPendingConsults()
-    #rejectedConsults = InterpreterService.getRejectedConsults(request.user.id)
-    #return render(request,'solicitationView.html', {'consults':consults}, {'rejectedConsults':rejectedConsults})
+    rejectConsult = RejectedConsults()
+    rejectConsult.interpreter = InterpreterService.getInterpreter(request.user.id)
+    rejectConsult.consult = DeafService.getConsult(id)
+    rejectConsult.save()
+
+    return render(request,'solicitationView.html', {'consults':consults})

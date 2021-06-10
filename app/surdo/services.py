@@ -1,6 +1,8 @@
+from django.http import request
 from .forms import ConsultForm
 from .models import Consult
 from hospital.services import HospitalService
+from interpreter.services import InterpreterService
 import logging
 logger = logging.getLogger(__name__)
 class DeafService():
@@ -47,3 +49,21 @@ class DeafService():
         consult.status = status
         consult.save()
         return consult
+
+    
+    def getPendingConsultsForInterpreter(user_id):
+        allConsults = Consult.objects.filter(status=1)
+        consults = []
+
+
+        for consult in allConsults:
+            consults.append(consult)
+            rejected_consults = InterpreterService.getRejectedConsults(consult.id)
+
+            for rejected_consult in rejected_consults:
+                logger.error(rejected_consult.interpreter.id,user_id)
+                if user_id == rejected_consult.interpreter.id:
+                    consults.pop(-1)
+
+
+        return consults
