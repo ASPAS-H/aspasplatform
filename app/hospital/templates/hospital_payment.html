@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/hospital_style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/hospital_payment.css' %}">
+    <title>ASPAS</title>
+</head>
+<body>
+    {% include 'navbar2.html' %}
+    <section>
+        <div class="container mt-2">
+            <div class="d-flex justify-content-between">
+                <h1><b>Pagamento</b></h1>
+                <h1>Saldo: $0.00</h1>
+            </div>
+            <h3>Metodos de pagamento:</h3>
+            <button class="btn btn-outline-dark" id="newpayment">+ Cadastar novo</button><br>
+            <a href="#" class="text-dark">Ver fatura</a>
+        </div>
+    </section>
+    <div class="confirm3">
+        <div class="confirmbox3" style="padding: 25px">
+            <div class="text-left"><h1>Escolha o metodo de pagamento</h1></div><br>
+            <select name="paymenttype" id="paymentType" class="form-control col-4" required>
+                <option value="0" selected disabled> -------------------- </option>
+                <option value="1">PIX</option>
+                <option value="2">TED</option>
+            </select><br>
+            <div class="d-flex flex-row justify-content-start">
+                <button type=button class="btn btn-primary" id="byes">Confirmar</button>
+                <button type=button class="btn btn-primary" id="bno">Voltar</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('newpayment').addEventListener('click', function () {
+            document.querySelector('.confirm3').style.display = 'flex';
+        });
+        document.getElementById('bno').addEventListener('click', function () {
+            document.querySelector('.confirm3').style.display = 'none';
+        });
+    </script>
+</body>
+</html>

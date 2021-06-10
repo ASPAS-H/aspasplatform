@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/hospital_style.css' %}">
+    <title>ASPAS</title>
+</head>
+<body>
+    {% include 'navbar2.html' %}
+    <div class="container mt-2">
+        <h1>Solicitações de consultas</h1>
+        <div class="row justify-content-between">
+            {% for consult in consults %}
+            <div class="card col-5 mb-4 bg-secondary bcard">
+                <h3 class="card-title">{{ consult.user.name }}</h3>
+                <div class="card-body">
+                    <p class="card-text"><b>Data:</b> {{ consult.date1|date:"d/m/Y" }}, {{ consult.date2|date:"d/m/Y" }}, {{ consult.date3|date:"d/m/Y" }}</p>
+                    <p class="card-text"><b>Obsevações:</b></p>
+                    <textarea class="form-control" disabled>{{ consult.observations }}</textarea>
+                    {% if consult.status == 0 or consult.status == 1 or consult.status == 4 %}
+                        <p class="text-danger"><b>STATUS:</b> {{ consult.getStringStatus }}</p>
+                    {% else %}
+                        <p class="text-success"><b>STATUS:</b> {{ consult.getStringStatus }}</p>
+                    {% endif %} 
+                    <div class="d-flex justify-content-end mt-2">
+                        <a href="/hospital/info" class="btn btn-primary">Ver consulta</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>

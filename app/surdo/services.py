@@ -28,7 +28,7 @@ class DeafService():
         try:
             consult = Consult.objects.get(id=id)
         except Consult.DoesNotExist:
-            consult = {"not_found": True}
+            consult = {"not_found": True,"id":id}
         return consult
     
     def getInterpreterConsults(interpreter_id):
@@ -41,3 +41,9 @@ class DeafService():
     def get_hospitals_consults(hospital_id):
         hospitals = Consult.objects.filter(hospital_id=hospital_id)
         return hospitals
+
+    def change_consult_status(consult, status):
+        consult = DeafService.getConsult(consult)
+        consult.status = status
+        consult.save()
+        return consult

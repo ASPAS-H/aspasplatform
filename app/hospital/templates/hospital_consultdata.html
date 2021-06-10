@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <title>ASPAS</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/hospital_style.css' %}">
+</head>
+
+<body>
+    {% include 'navbar2.html' %}
+    <section>
+        <div class="container mt-2">
+            <h1><b>Informacoes</b></h1>
+            <h1>Fulano</h1>
+            <label for="date">Data:</label>
+            <input class="form-control col-4" type="date">
+            <h3>Observacoes</h3>
+            <textarea class="form-control" disabled>Estou com doente</textarea>
+            Modalidade: <div class="text-danger">Telemedicina/Presencial</div><br>
+            <a href="patient" class="btn btn-outline-primary">Informacoes do paciente</a>
+            <button class="btn btn-primary" name="confirm" id="confirm">Mudar data</button>
+        </div>
+    </section>
+    <div class="confirm2">
+        <div class="confirmbox2 d-flex flex-column justify-content-center align-items-center">
+            <p>Sua consulta foi remarcada.</p>
+            <button type=button class="btn btn-primary" id="bno">OK</button>
+        </div>
+    </div>
+    <script>
+        document.getElementById('confirm').addEventListener('click', function () {
+            document.querySelector('.confirm2').style.display = 'flex';
+        });
+        document.getElementById('bno').addEventListener('click', function () {
+            document.querySelector('.confirm2').style.display = 'none';
+        });
+    </script>
+</body>
+
+</html>

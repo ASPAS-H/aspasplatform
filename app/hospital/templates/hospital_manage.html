@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/hospital_style.css' %}">
+    <title>ASPAS</title>
+</head>
+<body>
+    {% include 'navbar2.html' %}
+    <section>
+        <div class="container mt-2">
+            <h1>Genericar datas</h1>
+            <div class="row justify-content-between">
+                <div class="card col-5 mb-4 bg-secondary bcard">
+                    <h3 class="card-title">Fulano</h3>
+                    <div class="card-body">
+                        <!-- note: i removed the django code for testing purposes, because when i comment the django
+                            code, it still runs which causes blink or having consults. -->
+                        <p class="card-text"><b>Data:</b> 00/00/00</p>
+                        <p class="card-text"><b>Obsevações:</b></p>
+                        <textarea class="form-control" disabled>Estou com doente</textarea>
+                        <p class="text-danger"><b>STATUS:</b> AGUARDANDO HOSPITAL</p> 
+                        <div class="d-flex justify-content-end mt-2">
+                            <a href="/hospital/consultdata" class="btn btn-primary">Ver mais</a>
+                            <a href="#" class="btn btn-outline-primary" id="sendbutton">Procurar interprete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="confirm2">
+        <div class="confirmbox2 d-flex flex-column justify-content-center align-items-center">
+            <p>Solicitacao enviada.</p>
+            <button type=button class="btn btn-primary" id="bno">OK</button>
+        </div>
+    </div>
+    <script>
+        document.getElementById('sendbutton').addEventListener('click', function () {
+            document.querySelector('.confirm2').style.display = 'flex';
+        });
+        document.getElementById('bno').addEventListener('click', function () {
+            document.querySelector('.confirm2').style.display = 'none';
+        });
+    </script>
+</body>
+</html>

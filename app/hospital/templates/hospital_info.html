@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <title>ASPAS</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/hospital_style.css' %}">
+</head>
+
+<body>
+    {% include 'navbar2.html' %}
+    <div class="container mt-2">
+        <h1><b>Informacoes</b></h1>
+        <h1>Fulano</h1>
+        <h4>Datas sugeridas pelo paciente:</h4>
+        00/00/00, 00/00/00, 00/00/00<br>
+        <h3>Observacoes</h3>
+        <textarea class="form-control" disabled>Estou com doente</textarea>
+        Modalidade: <div class="text-danger">Telemedicina/Presencial</div><br>
+        <p>Data da consulta:</p>
+        <div class="row">
+            <div class="form-group col-4">
+                <input type="date" class="form-control" name="confirmdata" id="confirmdata">
+            </div>
+        </div>
+        <a href="patient" class="btn btn-outline-primary">Informacoes do paciente</a>
+        <button class="btn btn-primary" name="confirm" id="confirm">Confirmar</button>
+    </div>
+</body>
+
+</html>
