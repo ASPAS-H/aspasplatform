@@ -10,13 +10,14 @@ from address.forms import AddressForm
 from .services import InterpreterService
 from django.contrib.auth.hashers import make_password
 from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
 import logging
 logger = logging.getLogger(__name__)
 #Create your views here.
 
 @login_required(redirect_field_name='', login_url='/account/login')
 def solicitationView(request):
-    consults = DeafService.getPendingConsultsForInterpreter(request.user.id)
+    consults = DeafService.getPendingConsultsForInterpreter(InterpreterService.getInterpreter(request.user.id).id)
     return render(request,'solicitationView.html', {'consults':consults})
 
 
@@ -110,10 +111,12 @@ def addRejectConsult(request,id):
     
     
     consults = DeafService.getPendingConsults()
+    isrjec = DeafService.isRejectConsult(id, InterpreterService.getInterpreter(request.user.id))
+    logger.error(isrjec)
+    if not isrjec:
+        rejectConsult = RejectedConsults()
+        rejectConsult.interpreter = InterpreterService.getInterpreter(request.user.id)
+        rejectConsult.consult = DeafService.getConsult(id)
+        rejectConsult.save()
 
-    rejectConsult = RejectedConsults()
-    rejectConsult.interpreter = InterpreterService.getInterpreter(request.user.id)
-    rejectConsult.consult = DeafService.getConsult(id)
-    rejectConsult.save()
-
-    return render(request,'solicitationView.html', {'consults':consults})
+    return HttpResponseRedirect('/interpreter/solicitacoes')
