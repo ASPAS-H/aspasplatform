@@ -16,72 +16,68 @@
         <div class="form-row">
             <div class="form-group col-12">
                 <label for="name">Nome:</label>
-                <input type="text" name="name" class="form-control" disabled>
+                <input type="text" name="name" class="form-control" value="{{ deaf.user.name }}" disabled>
             </div>
         </div>
         <div class="form-row">
             <div class="form-group col-4">
                 <label for="phone">Telefone:</label>
-                <input type="text" name="phone" class="form-control" disabled>
+                <input type="text" name="phone" class="form-control" value="{{ deaf.phone }}" disabled>
             </div>
             <div class="form-group col-4">
                 <label for="gender">Genero:</label>
-                <input type="text" name="gender" class="form-control" disabled>
+                <input type="text" name="gender" class="form-control" value="{{ deaf.user.getGender }}" disabled>
             </div>
             <div class="form-group col-4">
                 <label for="birthdate">Data de nascimento:</label>
-                <input type="text" name="birthdate" class="form-control" disabled>
+                <input type="text" name="birthdate" class="form-control" value="{{ deaf.user.born_date|date:'d/m/Y' }}" disabled>
             </div>
         </div>
         <div class="form-row">
             <div class="form-group col-4">
                 <label for="cpf">CPF:</label>
-                <input type="text" name="cpf" class="form-control" disabled>
+                <input type="text" name="cpf" class="form-control" value="{{ deaf.cpf }}" disabled>
             </div>
             <div class="form-group col-4">
                 <label for="healthplan">Plano de saude:</label>
-                <input type="text" name="healthplan" class="form-control" disabled>
+                <input type="text" name="healthplan" class="form-control" value="{{ deaf.health_plan }}" disabled>
             </div>
             <div class="form-group col-4">
                 <label for="cep">CEP:</label>
-                <input type="text" name="cep" class="form-control" disabled>
+                <input type="text" name="cep" class="form-control" value="{{ deaf.user.address.zipCode }}" disabled>
             </div>
         </div>
         <div class="form-row">
             <div class="form-group col-6">
                 <label for="address">Endereço:</label>
-                <input type="text" name="address" class="form-control" disabled>
+                <input type="text" name="address" class="form-control" value="{{ deaf.user.address.street }}" disabled>
             </div>
-            <div class="form-group col-2">
-                <label for="addressnumber">Numero:</label>
-                <input type="text" name="addressnumber" class="form-control" disabled>
-            </div>
-            <div class="form-group col-4">
+            <div class="form-group col-6">
                 <label for="complement">Complemento:</label>
-                <input type="text" name="complement" class="form-control" disabled>
+                <input type="text" name="complement" class="form-control" value="{{ deaf.user.address.complement }}" disabled>
             </div>
         </div>
         <div class="form-row">
             <div class="form-group col-4">
                 <label for="district">Bairro:</label>
-                <input type="text" name="district" class="form-control" disabled>
+                <input type="text" name="district" class="form-control" value="{{ deaf.user.address.vile }}" disabled>
             </div>
             <div class="form-group col-4">
                 <label for="city">Cidade:</label>
-                <input type="text" name="city" class="form-control" disabled>
+                <input type="text" name="city" class="form-control" value="{{ deaf.user.address.city }}" disabled>
             </div>
             <div class="form-group col-4">
                 <label for="state">Estado:</label>
-                <input type="text" name="state" class="form-control" disabled>
+                <input type="text" name="state" class="form-control" value="{{ deaf.user.address.state }}" disabled>
             </div>
         </div>
         <div class="form-row">
             <div class="form-group col-12">
                 <label for="email">Email:</label>
-                <input type="text" name="email" class="form-control" disabled>
+                <input type="text" name="email" class="form-control" value="{{ deaf.user.email }}" disabled>
             </div>
         </div>
-        <button class="btn btn-primary" name="goback" id="goback">Voltar</button>
+        <a href="/hospital/info/{{ consult_id }}" class="btn btn-primary">Voltar</a>
     </div>
 </body>
 

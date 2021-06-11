@@ -13,19 +13,19 @@
     {% include 'navbar2.html' %}
     <div class="container mt-2">
         <h1><b>Informacoes</b></h1>
-        <h1>Fulano</h1>
+        <h1>{{ consult.user.name }}</h1>
         <h4>Datas sugeridas pelo paciente:</h4>
-        00/00/00, 00/00/00, 00/00/00<br>
+        {{ consult.date1|date:"d/m/Y" }}, {{ consult.date2|date:"d/m/Y" }}, {{ consult.date3|date:"d/m/Y" }}<br>
         <h3>Observacoes</h3>
-        <textarea class="form-control" disabled>Estou com doente</textarea>
-        Modalidade: <div class="text-danger">Telemedicina/Presencial</div><br>
-        <p>Data da consulta:</p>
+        <textarea class="form-control" disabled>{{ consult.observations }}</textarea>
+        Modalidade: <div class="text-danger font-weight-bold">{{ consult.getModelity }}</div><br>
+        <p>Agendar consulta para:</p>
         <div class="row">
             <div class="form-group col-4">
                 <input type="date" class="form-control" name="confirmdata" id="confirmdata">
             </div>
         </div>
-        <a href="patient" class="btn btn-outline-primary">Informacoes do paciente</a>
+        <a href="/hospital/patient/{{ consult.user.id }}/{{ consult.id }}" class="btn btn-outline-primary">Informacoes do paciente</a>
         <button class="btn btn-primary" name="confirm" id="confirm">Confirmar</button>
     </div>
 </body>
