@@ -1,6 +1,7 @@
-img{
+#logo{
     width: 130px;
     height: 40px;
+    margin-left: 20px;
 }
 
 nav{
@@ -23,4 +24,8 @@ a{
 #customize{
     margin-left: 50px;
     margin-right: 50px;
+}
+
+#someAjust{
+    margin-right: 20px;
 }
