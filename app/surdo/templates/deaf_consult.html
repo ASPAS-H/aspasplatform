@@ -36,8 +36,11 @@
             {% endif %}
             <h1>Informações</h1>
             <h3>{{ consult.hospital.name }}</h3>
-            <label for="date"><b>Data:</b></label>
-            <p>{{ consult.date1|date:"d/m/Y" }}</p>
+            {% if consult.confirmed_date != None %}
+                <p class="card-text"><b>Data:</b> {{ consult.confirmed_date|date:"d/m/Y" }}</p>
+            {% else %}
+                <p class="card-text"><b>Datas:</b> {{ consult.date1|date:"d/m/Y" }}, {{ consult.date2|date:"d/m/Y" }}, {{ consult.date3|date:"d/m/Y" }}</p>
+            {% endif %}
             <label for="name">Observações</label>
             <textarea name="obs" class="form-control" disabled>{{ consult.observations }}</textarea>
             <p><b class="text-dark">Modalidade: </b><label class="text-danger">{{ consult.getModelity }}</label></p>
