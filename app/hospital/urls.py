@@ -15,5 +15,6 @@ urlpatterns = [
     path('/videocall',views.showVideocall),
     path('/payment',views.showPayment),
     path('/consultdata',views.showConsultData),
+    path('/consult/confirm', views.confirm_consult)
     
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

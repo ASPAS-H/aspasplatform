@@ -1,6 +1,9 @@
 from django.shortcuts import render
+from django.http import HttpResponse
 from surdo.services import DeafService
 from .services import HospitalService
+from django.utils import formats
+import datetime
 import logging
 logger = logging.getLogger(__name__)
 # Create your views here.
@@ -34,3 +37,16 @@ def showPayment(request):
 
 def showConsultData(request):
     return render(request,"hospital_consultdata.html")
+
+def confirm_consult(request):
+    if request.method != "POST":
+        return HttpResponse("Rota não encontrada!")
+    
+    consult_id = request.POST["consult_id"]
+    date = request.POST["confirmdata"]
+    consult = DeafService.getConsult(consult_id)
+    consult.confirmed_date = date
+    consult.status = 1
+    consult.save()
+    consult = DeafService.getConsult(consult_id)
+    return render(request, "hospital_info.html", {"consult": consult, "success": "Consulta agenda com sucesso!"})
