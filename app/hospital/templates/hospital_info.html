@@ -39,7 +39,7 @@
             $(".alert").alert();
         </script>
         {% endif %}
-        <h1><b>Informacoes</b></h1>
+        <h1><b>Informações</b></h1>
         <h1>{{ consult.user.name }}</h1>
         <h4>Datas sugeridas pelo paciente:</h4>
         {{ consult.date1|date:"d/m/Y" }}, {{ consult.date2|date:"d/m/Y" }}, {{ consult.date3|date:"d/m/Y" }}<br>
@@ -49,7 +49,7 @@
         {% else %}
             <p>Data não confirmada</p>
         {% endif %}
-        <h3>Observacoes</h3>
+        <h3>Observações</h3>
         <textarea class="form-control" disabled>{{ consult.observations }}</textarea>
         Modalidade: <div class="text-danger font-weight-bold">{{ consult.getModelity }}</div><br>
         Status: <label class="font-weight-bold">{{ consult.getStringStatus }}</label>
@@ -64,7 +64,7 @@
             </div>
             <input type="hidden" name="consult_id" value="{{ consult.id }}">
             <button class="btn btn-primary" type="submit" id="confirm">Confirmar</button>
-            <a href="/hospital/patient/{{ consult.user.id }}/{{ consult.id }}" class="btn btn-outline-primary">Informacoes do paciente</a>
+            <a href="/hospital/patient/{{ consult.user.id }}/{{ consult.id }}" class="btn btn-outline-primary">Informações do paciente</a>
         </form>
     </div>
     <script>
