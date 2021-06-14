@@ -35,6 +35,7 @@
         <div id="customize">
             <h2>Interpretar Consultas</h2>
 
+            {% if consults%}
             <div class="row row-cols-1 row-cols-md-2 g-4">
                 
                 {% for consult in consults %}
@@ -62,6 +63,9 @@
                 {% endfor %}
                 
             </div>
+            {% else %}
+            <h4>Nenhuma Consulta Marcada</h4>
+            {% endif %}
         </div>
         
     </body>
