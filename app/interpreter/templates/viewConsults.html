@@ -12,7 +12,7 @@
 
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a href="/interpreter/"><img src="{% static 'img/logo_Final.png' %}" alt="Logo" class="mr-2"></a>
+            <a href="/interpreter"><img src="{% static 'img/logo_Final.png' %}" alt="Logo" class="mr-2"></a>
             
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,12 +28,12 @@
             </div>
 
             <div class="text-right" id="someAjust">
-                <h3>Olá, {{user.name}}</h3>
+                <h3>Olá, {{user.getFirstName}}</h3>
             </div>
         </nav>
 
         <div id="customize">
-            <h2>Interpretar Consulta</h2>
+            <h2>Interpretar Consultas</h2>
 
             <div class="row row-cols-1 row-cols-md-2 g-4">
                 
@@ -42,7 +42,13 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title">{{consult.user.name}}</h5>
-                            <h6 class="card-title">Data: {{consult.date1|date:"d/m/Y"}}</h6>
+                            {% if consult.confirmed_date != None %}
+                                <p class="card-text"></p><h6>Data:</h6>{{ consult.confirmed_date|date:"d/m/Y" }}</p>
+                                <p>Data Confirmada</p>
+                            {% else %}
+                                <p class="card-text"></p><h6>Datas:</h6>{{ consult.date1|date:"d/m/Y" }}, {{ consult.date2|date:"d/m/Y" }}, {{ consult.date3|date:"d/m/Y" }}</p>
+                                <p>Data ainda não confirmada</p>
+                            {% endif %}
                             <h6 class="card-title">Observações:</h6>
                             <textarea class="form-control" disabled>{{consult.observations}}</textarea>
                             <br>

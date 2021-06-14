@@ -12,7 +12,7 @@
 
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a href="/interpreter/"><img src="{% static 'img/logo_Final.png' %}" alt="Logo" class="mr-2" id="logo"></a>
+            <a href="/interpreter"><img src="{% static 'img/logo_Final.png' %}" alt="Logo" class="mr-2" id="logo"></a>
             
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,7 +28,7 @@
             </div>
 
             <div class="text-right" id="someAjust">
-                <h3>Olá, {{user.name}}</h3>
+                <h3>Olá, {{user.getFirstName}}</h3>
             </div>
         </nav>
         
