@@ -3,6 +3,7 @@
 #logo{
     width: 130px;
     height: 40px;
+    margin-left: 20px;
 }
 
 h1{
@@ -42,4 +43,8 @@ a{
     text-decoration: none;
     color: #000;
     font-weight: bold;
+}
+
+#someAjust{
+    margin-right: 20px;
 }

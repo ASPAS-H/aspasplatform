@@ -7,15 +7,15 @@
         <meta charset="utf-8">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="{% static 'css/Interpreter.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/interpreter.css' %}">
     </head>
     <body>
         <div id="parte_cima">
-            <a href="/account/logout" id="button1" class="btn btn btn-secondary">Logout</a>
             <img src="{% static 'img/logo_Final.png' %}" alt="Logo ASPAS">
+            <a href="/account/logout" id="button1" class="btn btn btn-secondary">Logout</a>
         </div>
         <div>
-            <h1>Olá, {{user.name}}</h1>
+            <h1>Olá, {{user.getFirstName}}</h1>
         </div>
         <div id="parte_baixo">
             <ul>

@@ -85,8 +85,8 @@ def updateAcceptConsult(request,id):
     
     consult.save()
 
-    consults = DeafService.getPendingConsults()
-    return render(request,'solicitationView.html', {'consults':consults})
+    
+    return HttpResponseRedirect('/interpreter/solicitacoes')
 
 
 @login_required(redirect_field_name='', login_url='/account/login')
@@ -97,8 +97,7 @@ def markOffConsult(request,id):
 
     consult.save()
 
-    consults = DeafService.getInterpreterConsults(InterpreterService.getInterpreter(request.user.id))
-    return render(request,'viewConsults.html', {'consults':consults})
+    return HttpResponseRedirect('/interpreter/consultas')
 
 
 @login_required(redirect_field_name='', login_url='/account/login')

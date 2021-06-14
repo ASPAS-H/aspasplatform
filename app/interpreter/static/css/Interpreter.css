@@ -7,7 +7,7 @@ body{
     width: 120px;
     height: 40px;
     margin-top: 35px;
-    margin-left: 20px;
+    margin-right: 20px;
     background-color: rgb(150, 170, 184);
     border: 0px;
     border-radius: 5px;
@@ -33,6 +33,7 @@ img{
     width: 130px;
     height: 40px;
     margin-top: 30px;
+    margin-left: 20px;
 }
 
 ul{
