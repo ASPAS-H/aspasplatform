@@ -12,22 +12,74 @@
 <body>
     {% include 'navbar2.html' %}
     <div class="container mt-2">
-        <h1><b>Informacoes</b></h1>
-        <h1>Fulano</h1>
-        <h4>Datas sugeridas pelo paciente:</h4>
-        00/00/00, 00/00/00, 00/00/00<br>
-        <h3>Observacoes</h3>
-        <textarea class="form-control" disabled>Estou com doente</textarea>
-        Modalidade: <div class="text-danger">Telemedicina/Presencial</div><br>
-        <p>Data da consulta:</p>
-        <div class="row">
-            <div class="form-group col-4">
-                <input type="date" class="form-control" name="confirmdata" id="confirmdata">
-            </div>
+        {% if error %}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <strong>ERRO!</strong>
+            {{ error }}
         </div>
-        <a href="patient" class="btn btn-outline-primary">Informacoes do paciente</a>
-        <button class="btn btn-primary" name="confirm" id="confirm">Confirmar</button>
+
+        <script>
+            $(".alert").alert();
+        </script>
+        {% endif %}
+
+        {% if success %}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <strong>Sucesso!</strong>
+            {{ success }}
+        </div>
+
+        <script>
+            $(".alert").alert();
+        </script>
+        {% endif %}
+        <h1><b>Informacoes</b></h1>
+        <h1>{{ consult.user.name }}</h1>
+        <h4>Datas sugeridas pelo paciente:</h4>
+        {{ consult.date1|date:"d/m/Y" }}, {{ consult.date2|date:"d/m/Y" }}, {{ consult.date3|date:"d/m/Y" }}<br>
+        <h4 class="mt-2">Data agendada</h4>
+        {% if consult.confirmed_date %}
+            {{ consult.confirmed_date|date:"d/m/Y" }}
+        {% else %}
+            <p>Data não confirmada</p>
+        {% endif %}
+        <h3>Observacoes</h3>
+        <textarea class="form-control" disabled>{{ consult.observations }}</textarea>
+        Modalidade: <div class="text-danger font-weight-bold">{{ consult.getModelity }}</div><br>
+        Status: <label class="font-weight-bold">{{ consult.getStringStatus }}</label>
+        <p class="font-weight-bold">Agendar consulta para:</p>
+        <hr>
+        <form action="/hospital/consult/confirm" onsubmit="return validateForm()" method="post">
+            {% csrf_token %}
+            <div class="row">
+                <div class="form-group col-4">
+                    <input type="date" class="form-control" name="confirmdata" id="confirmdata">
+                </div>
+            </div>
+            <input type="hidden" name="consult_id" value="{{ consult.id }}">
+            <button class="btn btn-primary" type="submit" id="confirm">Confirmar</button>
+            <a href="/hospital/patient/{{ consult.user.id }}/{{ consult.id }}" class="btn btn-outline-primary">Informacoes do paciente</a>
+        </form>
     </div>
+    <script>
+        function validateForm() {
+            canSubmit = true
+            currentDate = new Date()
+            currentDate.setDate(currentDate.getDate() - 1)
+            date = new Date(document.querySelector("#confirmdata").value)
+            if(date < currentDate) {
+                alert("A data deve depois ou igual a hoje")
+                canSubmit = false
+            }
+            return canSubmit
+        }
+    </script>
 </body>
 
 </html>

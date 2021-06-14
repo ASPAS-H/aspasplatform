@@ -1,6 +1,6 @@
 from django.http import request
 from .forms import ConsultForm
-from .models import Consult, RejectedConsults
+from .models import Consult, RejectedConsults, Deaf
 from hospital.services import HospitalService
 from interpreter.services import InterpreterService
 import logging
@@ -76,3 +76,6 @@ class DeafService():
             found = False
 
         return found
+    
+    def getDeaf(user_id):
+        return Deaf.objects.get(user_id = user_id)

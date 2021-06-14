@@ -106,3 +106,12 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     def getFirstName(self):
         return self.name.split()[0]
+
+    def getGender(self):
+        gender = {
+            0: "Masculino",
+            1: "Feminino",
+            2: "Não binario",
+            3: "Outro"
+        }
+        return gender[self.gender]

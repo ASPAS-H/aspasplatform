@@ -1,4 +1,4 @@
-from .models import Hospital
+from .models import Hospital, HospitalStaff
 from address.models import Address
 from surdo.models import Consult
 
@@ -16,6 +16,9 @@ class HospitalService():
     def getHospital(id):
         return Hospital.objects.get(id=id)
 
+    def getHospitalStaff(user_id):
+        return HospitalStaff.objects.get(user_id = user_id)
+    
     def getHospitalsFromState(state):
         hospitals = []
         all_hospitals = Hospital.objects.all()

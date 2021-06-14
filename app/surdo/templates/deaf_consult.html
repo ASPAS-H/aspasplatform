@@ -46,6 +46,12 @@
             {% else %}
                 <p class="text-success"><b class="text-dark">Status:</b> {{ consult.getStringStatus }}</p>
             {% endif %}
+
+            {% if consult.interpreter %}
+                <p class="text-dark"><b>Interprete:</b> {{ consult.interpreter.user.name }}</p>
+            {% else %}
+            <p class="text-dark"><b>Interprete:</b> AGUARDANDO INTERPRETE</p>
+            {% endif %}
         </div>
         <div class="container mt-2 justify-content-between">
             {% if consult.status == 2 %}
